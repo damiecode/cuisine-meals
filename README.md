@@ -1,68 +1,110 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">Welcome to Catalogue for Dogs clothes 👋</h1>
+<br>
 
-## Available Scripts
+<!-- <p>
+  <a href="https://rawcdn.githack.com/damiecode/Weather-App/feature/weatherApp/dist/index.html" target="_blank">
+    <img alt="Website" src="weather.png" />
+  </a>
+</p> -->
 
-In the project directory, you can run:
+<br>
 
-### `yarn start`
+### Introduction.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Capstone projects are solo projects at the end of the each of the Microverse Main Technical Curriculum sections. Building this project is very important for you because:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+* It's a real-world-like project, built with business specifications that will look really nice in your portfolio; and
+* You will get feedback about the achievement of technical and soft skills gained during this section of the program.
 
-### `yarn test`
+Requirements [here](https://www.notion.so/Catalogue-of-Dog-Clothes-8bf1512b8ab34fa28848beb8ab698a32).
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### Scenario Design
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+It is based on a catalogue of clothes for dogs. It is not a store itself because there are no payments or user authentication. It is just a catalogue, that is, a browsable list of items that you can filter and access to the details of one item. 
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+The webapp should have at least 2 types of pages:
+- one page with a list of items that could be filtered by some parameters; in the example project, it's a list of dog clothes that can be filtered by category (hoodies & sweaters, bowties, etc.)
+- one page for the item details; in this example, the product detail page (bowtie).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Technical mandatory requirements of the project
 
-### `yarn eject`
+1. The project is a single page application built with React and Redux
+2. The data that was retrieved from the API should be stored in the Redux store
+3. You should filter the data that you retrieve from the API using a Filter stateless component
+4. Every page, the main page and pages for each item, should have a unique route within the SPA
+5. The project should be deployed and accessible online
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Built With
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Tools
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* React
+* React-DOM
+* React Hooks
+* Redux
+* npm
+* CSS Modules
+* ES6
+* Webpack
+* prop-types
+* React Testing Library
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### ✨ [Live Demo](https://rawcdn.githack.com/damiecode/Weather-App/feature/weatherApp/dist/index.html)
 
-## Learn More
+## Usage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> Clone the repository to your local machine
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```sh
+$ git clone https://github.com/damiecode/catalogue-for-dogs-clothes.git
+```
 
-### Code Splitting
+> cd into the directory, install dependencies, build and start
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+```sh
+$ cd catalogue-for-dogs-clothes
+$ npm install
+$ npm run build
+$ npm run start
+```
 
-### Analyzing the Bundle Size
+> Open `http://127.0.0.1:8080` using your favourite broswer, if it doesn't open automatically.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Authors
 
-### Making a Progressive Web App
+👤 **Damilola Ale**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- Github: [@damiecode](https://github.com/damiecode)
+- Twitter: [@iamlildamski](https://twitter.com/iamlildamski)
 
-### Advanced Configuration
+## 🤝 Contributing
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/damiecode/catalogue-for-dogs-clothes.git/issues).
 
-### Deployment
+1. Fork it (https://github.com/damiecode/catalogue-for-dogs-clothes.git/fork)
+2. Create your working branch (git checkout -b [choose-a-name])
+3. Commit your changes (git commit -am 'what this commit will fix/add/improve')
+4. Push to the branch (git push origin [chosen-name])
+5. Create a new Pull Request
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Future features
+- Users will be able to see previously searched histories.
+- News from cities searched can be viewed.
 
-### `yarn build` fails to minify
+## Show your support
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+<!-- 
+[Design](https://www.behance.net/gallery/13271423/Bodytrackit-An-iOs-app-Branding-UX-and-UI) idea by [Gregoire Vella on Behance](https://www.behance.net/gregoirevella). -->
+
+- Hat tip to anyone whose code was used
+- Inspiration
+- etc
+
+## Contact me
+
+I am looking for my next opportunity. Reach out to me if you are looking to hire!
+_codenlyn@gmail.com_
