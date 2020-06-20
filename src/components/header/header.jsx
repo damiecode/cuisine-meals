@@ -26,7 +26,7 @@ Header.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  cartLength: state.shop.cart.length,
+  cartLength: state.length,
 });
 
 export default connect(mapStateToProps)(Header);
