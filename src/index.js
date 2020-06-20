@@ -5,12 +5,33 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import rootReducer from './reducers/index';
+
+const initialState = {
+  meals: [
+    {
+      id: Math.floor(Math.random() * 100),
+      name: 'Fried Chicken',
+      category: 'Fried-Foods',
+    },
+    {
+      id: Math.floor(Math.random() * 100),
+      name: 'Meat Pie',
+      category: 'Baked-Foods',
+    },
+    {
+      id: Math.floor(Math.random() * 100),
+      name: 'Moi-moi',
+      category: 'Steamed-Foods',
+    },
+  ],
+};
 
 const store = createStore(rootReducer, initialState)
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider>
+    <Provider store={store}>
       <App />
     </Provider>
   </React.StrictMode>,
