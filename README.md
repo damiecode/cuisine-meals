@@ -1,6 +1,6 @@
-<h1 align="center">Welcome to Catalogue for Dogs clothes 👋</h1>
+<h1 align="center">Welcome to Cuisine Meals 👋</h1>
 <br>
-
+=
 <!-- <p>
   <a href="https://rawcdn.githack.com/damiecode/Weather-App/feature/weatherApp/dist/index.html" target="_blank">
     <img alt="Website" src="weather.png" />
