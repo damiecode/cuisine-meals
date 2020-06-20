@@ -1,9 +1,10 @@
 import React from 'react';
+import styles from '../../assets/css/footer.css';
 
 const Footer = () => (
-  <footer>
+  <footer className={styles.footer}>
     <div>
-      <p>Copyright © Damilola Ale 2020</p>
+      <p className={styles.text}>Copyright © Damilola Ale 2020</p>
     </div>
   </footer>
 );

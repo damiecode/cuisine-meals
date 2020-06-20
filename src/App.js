@@ -7,7 +7,7 @@ import {
 import rootReducer from './reducers/index';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
-import './App.css';
+import './assets/css/App.css';
 
 const initialState = {
   meals: [
