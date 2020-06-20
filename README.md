@@ -50,7 +50,7 @@ The webapp should have at least 2 types of pages:
 * prop-types
 * React Testing Library
 
-### ✨ [Live Demo](https://rawcdn.githack.com/damiecode/Weather-App/feature/weatherApp/dist/index.html)
+### ✨ [Live Demo](https://catalogue-for-dogs-clothes.netlify.app)
 
 ## Usage
 
