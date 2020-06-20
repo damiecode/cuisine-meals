@@ -1,30 +1,64 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import {
+  BrowserRouter, Switch, Route, Redirect,
+} from 'react-router-dom';
+import rootReducer from './reducers/index';
+import Header from './components/header/header';
+import Footer from './components/footer/footer';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          {' '}
-          <code>src/App.js</code>
-          {' '}
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const initialState = {
+  meals: [
+    {
+      id: Math.floor(Math.random() * 100),
+      name: 'Fried Chicken',
+      category: 'Fried-Foods',
+    },
+    {
+      id: Math.floor(Math.random() * 100),
+      name: 'Meat Pie',
+      category: 'Baked-Foods',
+    },
+    {
+      id: Math.floor(Math.random() * 100),
+      name: 'Moi-moi',
+      category: 'Steamed-Foods',
+    },
+  ],
+};
+
+const store = createStore(rootReducer, initialState);
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.props = props;
+  }
+
+  render() {
+    return (
+      <Provider store={store}>
+        <BrowserRouter>
+          <>
+            <Header />
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={() => <Redirect to="/products" />}
+              />
+              <Route exact path="/products" />
+              <Route exact path="/products/:id" />
+              <Route exact patr="/cart" />
+            </Switch>
+            <Footer />
+          </>
+        </BrowserRouter>
+      </Provider>
+    );
+  }
 }
 
 export default App;
