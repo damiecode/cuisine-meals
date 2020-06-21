@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-const Header = ({ cartLength }) => (
+const Header = ({ favouritesLength }) => (
   <nav>
     <div>
       <NavLink to="/">Cuisine Meals</NavLink>
@@ -11,9 +11,9 @@ const Header = ({ cartLength }) => (
     <div>
       <ul>
         <li>
-          <NavLink to="{/cart}">
-            Cart
-            {cartLength ? `(${cartLength})` : '' }
+          <NavLink to="{/favourites}">
+            Favourites
+            {favouritesLength ? `(${favouritesLength})` : '' }
           </NavLink>
         </li>
       </ul>
@@ -22,11 +22,11 @@ const Header = ({ cartLength }) => (
 );
 
 Header.propTypes = {
-  cartLength: PropTypes.number.isRequired,
+  favouritesLength: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = state => ({
-  cartLength: state.length,
+  favouritesLength: state.length,
 });
 
 export default connect(mapStateToProps)(Header);
