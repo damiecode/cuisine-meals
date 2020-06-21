@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const Meals = meal => {
+const Meals = ({ props, addMealToFavourite }) => {
   const {
     name,
     category,
@@ -10,11 +10,10 @@ const Meals = meal => {
     images,
     instructions,
     id,
-  } = meal.meals;
+  } = props.meal;
 
   const imageRef = React.createRef();
-  const [img, setImg] = useState(images[0]);
-  const [aItem, setAItem] = useState(0);
+  const [img] = useState(images[0]);
 
   return (
     <div className="card h-100 meal">
@@ -25,19 +24,18 @@ const Meals = meal => {
           alt={name}
           ref={imageRef}
         />
-        <SlideDots len={images.length} activeItem={aItem} />
       </Link>
       <div className="card-body meal__text">
-        <h4 className="card-title meal__title">
+        <h4 className="card-title meal__name">
           <Link to={`/meals/${id}`}>{name}</Link>
         </h4>
         <h5 className="meal__category">{category}</h5>
         <h5 className="meal__area">{area}</h5>
-        <p className="card-text product__description">{instructions}</p>
+        <p className="card-text product__instructions">{instructions}</p>
         <button
           type="button"
           onClick={() => {
-            props.dispatch(addProductToCart({ ...props.product }));
+            props.dispatch(addMealToFavourite({ ...props.meal }));
           }}
           className="btn btn-info meal__add-to-favourites"
         >
@@ -57,6 +55,7 @@ Meals.propTypes = {
     instructions: PropTypes.string,
     images: PropTypes.string,
   }).isRequired,
+  addMealToFavourite: PropTypes.func.isRequired,
 };
 
 export default (Meals);

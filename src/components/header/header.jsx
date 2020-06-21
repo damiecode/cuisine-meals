@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 const Header = ({ favouritesLength }) => (
-  <nav>
-    <div>
-      <NavLink to="/">Cuisine Meals</NavLink>
+  <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div className="container">
+      <NavLink className="navbar-brand" to="/">Cuisine Meals</NavLink>
     </div>
     <div>
-      <ul>
-        <li>
-          <NavLink to="{/favourites}">
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item">
+          <NavLink className="nav-link" to="{/favourites}">
+            <FavoriteBorderIcon />
             Favourites
             {favouritesLength ? `(${favouritesLength})` : '' }
           </NavLink>
@@ -25,8 +26,4 @@ Header.propTypes = {
   favouritesLength: PropTypes.number.isRequired,
 };
 
-const mapStateToProps = state => ({
-  favouritesLength: state.length,
-});
-
-export default connect(mapStateToProps)(Header);
+export default Header;

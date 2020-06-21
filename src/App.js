@@ -21,11 +21,11 @@ class App extends Component {
             <Route
               exact
               path="/"
-              render={() => <Redirect to="/products" />}
+              render={() => <Redirect to="/meals" />}
             />
-            <Route exact path="/products" />
-            <Route exact path="/products/:id" />
-            <Route exact patr="/cart" />
+            <Route exact path="/meals" />
+            <Route exact path="/meals/:id" />
+            <Route exact patr="/favourites" />
           </Switch>
           <Footer />
         </>
