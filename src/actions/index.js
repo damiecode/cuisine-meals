@@ -1,33 +1,3 @@
-export const ADD_MEAL_TO_FAVOURITE = 'ADD_MEAL_TO_FAVOURITE';
-export const REMOVE_MEAL_FROM_FAVOURITE = 'REMOVE_MEAL_FROM_FAVOURITE';
-export const INCREMENT_FAVOURITE_ITEM_QUANTITY = 'INCREMENT_FAVOURITE_ITEM_QUANTITY';
-export const DECREMENT_FAVOURTIE_ITEM_QUANTITY = 'DECREMENT_FAVOURTIE_ITEM_QUANTITY';
-
-export const addMealToFavourite = meal => ({
-  type: ADD_MEAL_TO_FAVOURITE,
-  payload: meal,
-});
-
-export const removeMealFromFavourite = mealId => ({
-  type: REMOVE_MEAL_FROM_FAVOURITE,
-  payload: mealId,
-});
-
-export const incrementFavouriteQuantity = mealId => ({
-  type: INCREMENT_FAVOURITE_ITEM_QUANTITY,
-  payload: mealId,
-});
-
-export const decrementFavouriteQuantity = mealId => ({
-  type: DECREMENT_FAVOURTIE_ITEM_QUANTITY,
-  payload: mealId,
-});
-
-// import axios from 'axios';
-
-// const URL = 'https://www.themealdb.com/api/json/v1/1/';
-// const API_KEY = process.env.REACT_APP_API_KEY;
-// const API_GET_NAME = 'meal/name';
 // const API_GET_MEAL_LATEST = 'meal/latest';
 // const API_GET_MEAL_INGREDIENT = 'meal/ingredient';
 // const API_GET_MAIN_INGREDIENT = 'meal/main_ingredient';
@@ -87,70 +57,111 @@ export const decrementFavouriteQuantity = mealId => ({
 //   selectedObject,
 // });
 
-// // MealList
-// const fetchMealListBy = (API_GET_MOVIE_BY = API_GET_MOVIE_POPULAR, searchBy 
-// = 'Popularity', page = '1', genreIDs = []) => dispatch => {
-//   const genreParams = genreIDs ? `${API_PARAMS_GENRE}${genreIDs.join('%2C')}` : '';
-//   dispatch(fetchRequest());
-//   axios.get(`${URL}${API_GET_MOVIE_BY}${API_KEY}
-// ${API_PARAMS_LANG_EN}${API_PARAMS_PAGE}${page}${genreParams}`)
-//     .then(response => {
-//       dispatch(fetchRequestSuccess(response.statusText));
-//       dispatch(fetchMovieListSuccess(response.data, API_GET_MOVIE_BY, searchBy, genreIDs));
-//     })
-//     .catch(error => {
-//       dispatch(fetchRequestFailure(error.response.data.status_message));
-//     });
-// };
+export const FETCH_REQUEST = 'FETCH_REQUEST';
+export const FETCH_REQUEST_SUCCESS = 'FETCH_REQUEST_SUCCESS';
+export const FETCH_REQUEST_FAILURE = 'FETCH_REQUEST_FAILURE';
 
-// // MovieList Populate Similar Movies List
-// const fetchSimilarMovies = (movieID, searchBy = 'Similarity', page = '1') => dispatch => {
-//   dispatch(fetchRequest());
-//   axios.get(`${URL}${API_GET_MOVIE_SIMILAR(movieID)}${API_KEY}$
-// {API_PARAMS_LANG_EN}${API_PARAMS_PAGE}${page}`)
-//     .then(response => {
-//       dispatch(fetchRequestSuccess(response.statusText));
-//       dispatch(fetchMovieListSuccess(response.data, API_GET_MOVIE_SIMILAR(movieID), searchBy));
-//     })
-//     .catch(error => {
-//       dispatch(fetchRequestFailure(error.response.data.status_message));
-//     });
-// };
+export const FETCH_MEALS = 'FTECH_MEALS';
+export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
 
-// // MoviePage Grab a Single Movie
-// const fetchMovie = movieID => dispatch => {
-//   dispatch(fetchRequest());
-//   axios.get(`${URL}${API_GET_MOVIE(movieID)}${API_KEY}${API_PARAMS_LANG_EN}`)
-//     .then(response => {
-//       dispatch(fetchRequestSuccess(response.statusText));
-//       dispatch(fetchMovieSuccess(response.data));
-//     })
-//     .catch(error => {
-//       dispatch(fetchRequestFailure(error.response.data.status_message));
-//     });
-// };
+export const fetchRequest = () => ({
+  type: FETCH_REQUEST,
+});
 
-// // Genres Populate List
-// const fetchGenres = () => dispatch => {
-//   dispatch(fetchRequest());
-//   axios.get(`${URL}${API_GET_GENRES}${API_KEY}`)
-//     .then(response => {
-//       dispatch(fetchRequestSuccess(response.statusText));
-//       dispatch(fetchGenresSuccess(response.data.genres));
-//     })
-//     .catch(error => {
-//       dispatch(fetchRequestFailure(error.response.data.status_message));
-//     });
-// };
+export const fetchRequestSuccess = response => ({
+  type: FETCH_REQUEST_SUCCESS,
+  response,
+});
 
-// export {
-//   CHANGE_FILTER, FETCH_MEALLIST, FETCH_MEAL, FETCH_GENRES,
-//   FETCH_MEALS_PENDING, FETCH_MEALS_SUCCESS, FETCH_MEALS_ERROR,
-//   TOGGLE_MODAL, REFRESH_MODAL, fetchMealsPending,
-//   fetchMealsSuccess,
-//   fetchMealsError,
-//   API_GET_MEAL_POPULAR, API_GET_MEAL_TOP_RATED, API_GET_MEAL_UPCOMING,
-//   API_GET_MEAL_IN_THEATRES, API_GET_MEAL_BY,
-//   changeFilter, fetchMealListBy, fetchSimilarMeals, fetchMeal, fetchGenres,
-//   toggleModal, refreshModal,
-// };
+export const fetchRequestFailure = (response, form = '') => ({
+  type: FETCH_REQUEST_FAILURE,
+  response,
+  form,
+});
+
+export const fetchCategoriesSuccess = categories => ({
+  type: FETCH_CATEGORIES,
+  response: categories,
+});
+
+export const fetchMealsSuccess = meals => ({
+  type: FETCH_MEALS,
+  response: meals,
+});
+
+export const ADD_MEAL_TO_FAVOURITE = 'ADD_MEAL_TO_FAVOURITE';
+export const REMOVE_MEAL_FROM_FAVOURITE = 'REMOVE_MEAL_FROM_FAVOURITE';
+export const INCREMENT_FAVOURITE_ITEM_QUANTITY = 'INCREMENT_FAVOURITE_ITEM_QUANTITY';
+export const DECREMENT_FAVOURTIE_ITEM_QUANTITY = 'DECREMENT_FAVOURTIE_ITEM_QUANTITY';
+
+export const addMealToFavourite = meal => ({
+  type: ADD_MEAL_TO_FAVOURITE,
+  payload: meal,
+});
+
+export const removeMealFromFavourite = mealId => ({
+  type: REMOVE_MEAL_FROM_FAVOURITE,
+  payload: mealId,
+});
+
+export const incrementFavouriteQuantity = mealId => ({
+  type: INCREMENT_FAVOURITE_ITEM_QUANTITY,
+  payload: mealId,
+});
+
+export const decrementFavouriteQuantity = mealId => ({
+  type: DECREMENT_FAVOURTIE_ITEM_QUANTITY,
+  payload: mealId,
+});
+
+export const ADD_CATEGORY_TO_FILTER = 'ADD_CATEGORY_TO_FILTER';
+export const REMOVE_CATEGORY_FROM_FILTER = 'REMOVE_CATEGORY_FROM_FILTER';
+
+export const addCategoryToFilter = category => ({
+  type: ADD_CATEGORY_TO_FILTER,
+  category,
+});
+
+export const removeCategoryFromFilter = category => ({
+  type: REMOVE_CATEGORY_FROM_FILTER,
+  category,
+});
+
+export const ORDER_BY_ASC = 'ORDER_BY_ASC';
+export const ORDER_BY_DESC = 'ORDER_BY_DESC';
+export const CLEAR_ORDER_BY_LETTER = 'CLEAR_ORDER_BY_LETTER';
+
+export const orderByAsc = () => ({
+  type: ORDER_BY_ASC,
+});
+
+export const orderByDesc = () => ({
+  type: ORDER_BY_DESC,
+});
+
+export const clearOrderBy = () => ({
+  type: CLEAR_ORDER_BY_LETTER,
+});
+
+export const PREV_PAGE = 'PREV_PAGE';
+export const NEXT_PAGE = 'NEXT_PAGE';
+export const GO_PAGE = 'GO_PAGE';
+export const COUNT_ITEM = 'COUNT_ITEM';
+
+export const prevPage = () => ({
+  type: PREV_PAGE,
+});
+
+export const nextPage = () => ({
+  type: NEXT_PAGE,
+});
+
+export const goPage = n => ({
+  type: GO_PAGE,
+  currentPage: n,
+});
+
+export const countItems = n => ({
+  type: COUNT_ITEM,
+  totalItemsCount: n,
+});
