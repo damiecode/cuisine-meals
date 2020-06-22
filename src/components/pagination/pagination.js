@@ -3,8 +3,6 @@ import {connect} from "react-redux";
 import {goPage, nextPage, prevPage} from "../../actions";
 
 class Pagination extends Component {
-
-
     onPage(n){
         this.props.onGoPage(n);
     }
