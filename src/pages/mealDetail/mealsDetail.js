@@ -4,19 +4,19 @@ import PropTypes from 'prop-types';
 import MealDetails from '../../components/mealDetails/mealDetails';
 import MealImage from '../../components/mealImage/mealImage';
 
-const MealDetail = props => (
+const MealDetail = meal => (
   <div className="container" style={{ padding: '6rem 0' }}>
     <div className="card">
       <div className="row">
-        <MealImage images={props.meal.images} />
-        <MealDetails product={props.meal} />
+        <MealImage images={meal.images} />
+        <MealDetails product={meal} />
       </div>
     </div>
   </div>
 );
 
 MealDetail.propTypes = {
-  meal: PropTypes.string,
+  meal: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state, props) => {

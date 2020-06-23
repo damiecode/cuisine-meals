@@ -1,5 +1,6 @@
 .meal {
   padding-bottom: 2rem;
+
   &__img {
     width: 100%;
     height: 100%;
@@ -17,7 +18,7 @@
   }
 
   &__name {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 
   &__instructions {
@@ -25,32 +26,31 @@
   }
 
   &:hover {
-    box-shadow: 0 1rem 2rem rgba(0,0,0, .2);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   }
 
   &__add-to-favourites {
     position: absolute;
-    bottom: .8rem;
+    bottom: 0.8rem;
     width: 60%;
     left: 50%;
     opacity: 0;
     visibility: hidden;
     transform: translateX(-50%);
-    transition: all .2s;
+    transition: all 0.2s;
     padding: 3px 12px;
-
   }
 
   &:hover &__add-to-favourites {
     visibility: visible;
     opacity: 1;
   }
-
 }
 
 @media only screen and (max-width: 768px) {
   .meal {
     height: auto !important;
+
     &__add-to-cart {
       visibility: visible;
       opacity: 1;

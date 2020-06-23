@@ -1,48 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { addMealToFavourite } from '../../actions/index';
 
-const MealDetails = props => {
-  const {
-    name,
-    images,
-    category,
-    area,
-    tags,
-    source,
-    instructions,
-    id,
-  } = props.meal;
-
-  const onFavourites = () => {
-    props.dispatch(addMealToFavourite(props.meal));
+const MealDetails = meal => {
+  const onFavourites = meal => {
+    addMealToFavourite(meal);
   };
 
   return (
     <aside className="col-sm-7">
       <article className="card-body p-5">
-        <h3 className="title mb-3">{name}</h3>
+        <h3 className="title mb-3">{meal.name}</h3>
 
         <dl className="item-property">
           <dt>Instructions</dt>
-          <dd><p className="text-capitalize">{instructions}</p></dd>
+          <dd><p className="text-capitalize">{meal.instructions}</p></dd>
         </dl>
         <dl className="param param-feature">
           <dt>Category</dt>
-          <dd className="text-capitalize">{category}</dd>
+          <dd className="text-capitalize">{meal.category}</dd>
         </dl>
         <dl className="param param-feature">
           <dt>Area</dt>
-          <dd>{area}</dd>
+          <dd>{meal.area}</dd>
         </dl>
         <dl className="param param-feature">
           <dt>Tags</dt>
-          <dd>{tags}</dd>
+          <dd>{meal.tags}</dd>
         </dl>
         <dl className="param param-feature">
           <dt>Source</dt>
-          <dd>{source}</dd>
+          <dd>{meal.source}</dd>
         </dl>
         <hr />
         <hr />
@@ -73,4 +63,14 @@ MealDetails.propTypes = {
   }).isRequired,
 };
 
-export default MealDetails;
+const mapStateToProps = state => ({
+  meal: state.meal,
+});
+
+const mapDispatchToProps = dispatch => ({
+  addMealToFavourite: meal => {
+    dispatch(addMealToFavourite(meal));
+  },
+});
+
+export default connect(mapStateToProps)(mapDispatchToProps)(MealDetails);

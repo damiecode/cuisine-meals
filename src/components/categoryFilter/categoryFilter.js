@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import './BrandFilter.scss';
+import './catgoryFilter.scss';
 import fetchCategories from '../../data/categories';
 import { addCategoryToFilter, removeCategoryFromFilter } from '../../actions/index';
 

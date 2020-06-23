@@ -10,8 +10,6 @@
     opacity: 0;
     height: 0;
     width: 0;
-
-
   }
 
   &__span {
@@ -30,15 +28,15 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: .6rem;
-      height: .6rem;
+      width: 0.6rem;
+      height: 0.6rem;
       background-color: dodgerblue;
       transform: translate(-50%, -50%);
     }
   }
 
   &:hover &__span {
-    background-color: #eeeeee;
+    background-color: #eee;
   }
 
   &__input:checked + &__span::after {
@@ -51,7 +49,6 @@
 }
 
 @media only screen and (max-width: 768px) {
-
   .flex-50 {
     flex: 0 0 50%;
   }
