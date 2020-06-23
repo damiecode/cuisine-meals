@@ -1,34 +1,27 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import shortenTitle from '../../pipes/shortenTitle';
 import './favourites.scss';
 import {
-  decrementFavouriteQuantity, incrementFavouriteQuantity, removeMealFromFavourite,
+  addMealToFavourite,
+  decrementFavouriteQuantity,
+  incrementFavouriteQuantity,
+  removeMealFromFavourite,
 } from '../../actions';
 
-const FavouriteItem = (
-  {
-    name,
-    category,
-    images,
-    instructions,
-    quantity,
-    id,
-    dispatch,
-  },
-) => {
-  const [itemQuantity, setItemQuantity] = useState(quantity);
+const FavouriteItem = ({ meal }) => {
+  const [itemQuantity, setItemQuantity] = useState(meal.quantity);
   const removeItem = () => {
-    dispatch(removeMealFromFavourite(id));
+    removeMealFromFavourite(meal.id);
   };
 
   const handleQuantityChange = e => {
-    /*  const value = e.target.value;
-        console.log(value)
-        if(value > 0 && value <= 10) {
-            setItemQuantity(value);
-            dispatch(addProductToCart(id));
-        } */
+    const { value } = e.target;
+    if (value > 0 && value <= 10) {
+      setItemQuantity(value);
+      addMealToFavourite(meal.id);
+    }
   };
 
   const incrementOrDecrement = (e, type) => {
@@ -36,12 +29,12 @@ const FavouriteItem = (
 
     if (type === 'inc' && value < 10) {
       setItemQuantity(itemQuantity + 1);
-      dispatch(incrementFavouriteQuantity(id));
+      incrementFavouriteQuantity(meal.id);
     }
 
     if (type === 'desc' && value > 1) {
       setItemQuantity(itemQuantity - 1);
-      dispatch(decrementFavouriteQuantity(id));
+      decrementFavouriteQuantity(meal.id);
     }
   };
 
@@ -50,22 +43,22 @@ const FavouriteItem = (
       <div className="col-12 col-sm-12 col-md-2 text-center">
         <img
           className="img-responsive"
-          src={images}
+          src={meal.images}
           style={{ height: '60%', width: '60%' }}
-          alt={instructions}
+          alt={meal.instructions}
         />
       </div>
       <div className="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-        <h4 className="product-name"><strong>{shortenTitle(name)}</strong></h4>
+        <h4 className="product-name"><strong>{shortenTitle(meal.name)}</strong></h4>
         <h4>
-          <small className="product-description">{instructions}</small>
+          <small className="product-description">{meal.instructions}</small>
         </h4>
       </div>
       <div className="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row product-quantity-container align-items-center">
         <div className="col-6 col-sm-6 col-md-6 text-md-right" style={{ paddingTop: '5px' }}>
           <h6>
             <strong>
-              <h5 className="meal__category">{category}</h5>
+              <h5 className="meal__category">{meal.category}</h5>
               <span className="text-muted">x</span>
             </strong>
           </h6>
@@ -118,7 +111,27 @@ FavouriteItem.propTypes = {
     category: PropTypes.string,
     instructions: PropTypes.string,
     images: PropTypes.string,
+    quantity: PropTypes.number,
   }).isRequired,
 };
 
-export default FavouriteItem;
+const mapStateToProps = state => ({
+  meal: state.meal,
+});
+
+const mapDispatchToProps = dispatch => ({
+  addMealToFavourite: meal => {
+    dispatch(addMealToFavourite(meal));
+  },
+  removeMealFromFavourite: meal => {
+    dispatch(removeMealFromFavourite(meal));
+  },
+  incrementFavouriteQuantity: meal => {
+    dispatch(incrementFavouriteQuantity(meal));
+  },
+  decrementFavouriteQuantity: meal => {
+    dispatch(decrementFavouriteQuantity(meal));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(FavouriteItem);

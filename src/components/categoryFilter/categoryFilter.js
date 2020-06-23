@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './BrandFilter.scss';
@@ -6,15 +6,15 @@ import fetchCategories from '../../data/categories';
 import { addCategoryToFilter, removeCategoryFromFilter } from '../../actions/index';
 
 const CategoryFilter = props => {
-  const { dispatch, categoryItemsCount } = props;
+  const { categoryItemsCount } = props;
   const handleSelectBox = e => {
     const { name } = e.target;
     const value = e.target.checked;
 
-    if (e.target.checked) {
-      dispatch(addCategoryToFilter(name));
+    if (value) {
+      addCategoryToFilter(name);
     } else {
-      dispatch(removeCategoryFromFilter(name));
+      removeCategoryFromFilter(name);
     }
   };
 
@@ -25,8 +25,8 @@ const CategoryFilter = props => {
       </div>
       <ul className="list-group flex-row flex-wrap">
         {fetchCategories.map(category => (
-          <li className="list-group-item flex-50">
-            <label className="custom-checkbox text-capitalize">
+          <li className="list-group-item flex-50" key={category.id}>
+            <label htmlFor={category} className="custom-checkbox text-capitalize">
               {' '}
               {category}
               {' '}
@@ -35,7 +35,7 @@ const CategoryFilter = props => {
               )
               <input
                 type="checkbox"
-                name={brand}
+                name={category}
                 className="custom-checkbox__input"
                 onInput={handleSelectBox}
               />
@@ -64,4 +64,13 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(CategoryFilter);
+const mapDispatchToProps = dispatch => ({
+  addCategoryToFilter: category => {
+    dispatch(addCategoryToFilter(category));
+  },
+  removeCategoryFromFilter: category => {
+    dispatch(removeCategoryFromFilter(category));
+  },
+});
+
+export default connect(mapStateToProps)(mapDispatchToProps)(CategoryFilter);
