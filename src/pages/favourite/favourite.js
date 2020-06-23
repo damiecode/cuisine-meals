@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavouriteItem from '../../components/favouriteItems/favourites';
 
@@ -13,14 +14,18 @@ const FavouriteMeals = props => (
           <div className="clearfix" />
         </div>
         <div className="card-body">
-          {props.favouriteItemCount ? props.favouriteItems.map(cart => (
-            <FavouriteItem {...favourite} img={favourite.images[0]} />
+          {props.favouriteItemCount ? props.favouriteItems.map(favourite => (
+            <FavouriteItem {...favourite} img={favourite.images[0]} key={favourite.id} />
           )) : <h1 className="display-4 mt-5 text-center">There is no meal in your favourite</h1> }
         </div>
       </div>
     </div>
   </>
 );
+
+FavouriteMeals.propTypes = {
+  favouriteItemCount: PropTypes.number.isRequired,
+}
 
 const mapStateToProps = state => ({
   favouriteItems: state.favourite,

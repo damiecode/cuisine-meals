@@ -1,10 +1,12 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Meals from '../../components/meals/meals';
-import categoryFilter from '../../pipes/catgoryFilter';
+import categoryFilter from '../../pipes/categoryFilter';
 import orderByFilter from '../../pipes/orderByFilter';
-import Layout from '../../components/Layout/Layout';
-// import {paginationPipe} from "../../pipes/paginationFilter";
+import Layout from '../../components/layout/layout';
+import paginationPipe from '../../pipes/paginationFilter';
+import LetterFilter from '../../components/orderFilter/filter';
 // import Pagination from "../../components/Pagination/Pagination";
 
 class MealList extends Component {
@@ -22,7 +24,7 @@ class MealList extends Component {
 
   onPrev() {
     const page = this.state;
-    const updatedState = { ...this.state };
+    const updatedState = { ...page };
     updatedState.currentPage = page.currentPage - 1;
     this.setState(updatedState);
   }
@@ -30,10 +32,10 @@ class MealList extends Component {
   onNext() {
     const page = this.state;
     this.setState(prevState => ({
-      ...this.state,
-      page: {...prevState.page, currentPage: page.currentPage + 1},
-    })
-  );
+      ...page,
+      page: { ...prevState.page, currentPage: page.currentPage + 1 },
+    }));
+  }
 
   changeLayout(n) {
     this.setState({ gridValue: n });
@@ -52,14 +54,17 @@ class MealList extends Component {
   }
 
   goPage(n) {
-    this.setState({
-      ...this.state,
+    const page = this.state;
+    this.setState(prevState => ({
+      page,
+      prevState,
       currentPage: n,
-    });
+    }));
   }
 
   render() {
-    const isActive = this.state.colValue[this.state.colValue.length - 1];
+    const page = this.state;
+    const isActive = page.colValue[page.colValue.length - 1];
 
     return (
       <div className="col-lg-9">
@@ -68,28 +73,28 @@ class MealList extends Component {
             <div className="card ">
               <div className="card-header d-flex justify-content-end">
                 <span className="mr-3">Change Layout: </span>
-                <Layout len={3} isActive={this.state.gridValue === 3} click={this.changeLayout} />
-                <Layout len={4} isActive={this.state.gridValue === 4} click={this.changeLayout} />
+                <Layout len={3} isActive={page.gridValue === 3} click={this.changeLayout} />
+                <Layout len={4} isActive={page.gridValue === 4} click={this.changeLayout} />
               </div>
             </div>
           </div>
         </div>
         <div className="row">
           {paginationPipe(this.props.meals, this.state).map(meal => {
-            const classes = `${this.state.colValue} col-md-6 mb-4`;
+            const classes = `${page.colValue} col-md-6 mb-4`;
             return (
               <div className={classes}>
-                <Product key={meal.id} meal={meal} />
+                <Meals key={meal.id} meal={meal} />
               </div>
             );
           })}
         </div>
         <div className="d-flex justify-content-end">
-          <Pagination
+          <LetterFilter
             totalItemsCount={this.props.meals.length}
-            currentPage={this.state.currentPage}
-            perPage={this.state.perPage}
-            pagesToShow={this.state.pagesToShow}
+            currentPage={page.currentPage}
+            perPage={page.perPage}
+            pagesToShow={page.pagesToShow}
             onGoPage={this.goPage}
             onPrevPage={this.onPrev}
             onNextPage={this.onNext}
@@ -104,7 +109,7 @@ const mapStateToProps = state => {
   const categories = state.categoryFilter;
   const { orderBy } = state;
 
-  const filterByCategoryArr = categoryilter(state.meals, categories);
+  const filterByCategoryArr = categoryFilter(state.meals, categories);
   const filterByOrderArr = orderByFilter(filterByCategoryArr, orderBy);
 
   return { meals: filterByOrderArr };

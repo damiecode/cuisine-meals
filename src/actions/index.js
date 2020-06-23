@@ -130,6 +130,7 @@ export const removeCategoryFromFilter = category => ({
 export const ORDER_BY_ASC = 'ORDER_BY_ASC';
 export const ORDER_BY_DESC = 'ORDER_BY_DESC';
 export const CLEAR_ORDER_BY_LETTER = 'CLEAR_ORDER_BY_LETTER';
+export const CHANGE_FILTER = 'CHANGE_FILTER';
 
 export const orderByAsc = () => ({
   type: ORDER_BY_ASC,
@@ -141,6 +142,11 @@ export const orderByDesc = () => ({
 
 export const clearOrderBy = () => ({
   type: CLEAR_ORDER_BY_LETTER,
+});
+
+export const change = letter => ({
+  type: CHANGE_FILTER,
+  letter,
 });
 
 export const PREV_PAGE = 'PREV_PAGE';

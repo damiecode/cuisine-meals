@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import {
   ADD_MEAL_TO_FAVOURITE,
   DECREMENT_FAVOURTIE_ITEM_QUANTITY,
@@ -14,12 +15,6 @@ const initialState = {
 const storeReducer = (state = initialState, action) => {
   let updatedFavourite;
   let updatedItemIndex;
-  const incrementedItem = {
-    ...updatedFavourite[updatedItemIndex],
-  };
-  const decrementedItem = {
-    ...updatedFavourite[updatedItemIndex],
-  };
 
   switch (action.type) {
     case INCREMENT_FAVOURITE_ITEM_QUANTITY:
@@ -27,6 +22,10 @@ const storeReducer = (state = initialState, action) => {
       updatedItemIndex = updatedFavourite.findIndex(
         item => item.id === action.payload,
       );
+
+      const incrementedItem = {
+        ...updatedFavourite[updatedItemIndex],
+      };
 
       incrementedItem.quantity += 1;
 
@@ -39,6 +38,10 @@ const storeReducer = (state = initialState, action) => {
       updatedItemIndex = updatedFavourite.findIndex(
         item => item.id === action.payload,
       );
+
+      const decrementedItem = {
+        ...updatedFavourite[updatedItemIndex],
+      };
 
       decrementedItem.quantity -= 1;
 

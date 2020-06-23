@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -8,27 +9,9 @@ import './assets/css/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const initialState = {
-  meals: [
-    {
-      id: Math.floor(Math.random() * 100),
-      name: 'Fried Chicken',
-      category: 'Fried-Foods',
-    },
-    {
-      id: Math.floor(Math.random() * 100),
-      name: 'Meat Pie',
-      category: 'Baked-Foods',
-    },
-    {
-      id: Math.floor(Math.random() * 100),
-      name: 'Moi-moi',
-      category: 'Steamed-Foods',
-    },
-  ],
-};
-
-const store = createStore(rootReducer, initialState);
+const store = createStore(rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__
+  && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
   <React.StrictMode>
@@ -39,7 +22,4 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();

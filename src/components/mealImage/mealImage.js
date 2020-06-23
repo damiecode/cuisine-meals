@@ -9,7 +9,7 @@ const MealImage = ({ images, name }) => {
       <article className="gallery-wrap">
         <div className="img-big-wrap">
           <div style={{ padding: '2rem' }}>
-            <a href="#">
+            <a href={img}>
               <img
                 ref={imageRef}
                 src={img}

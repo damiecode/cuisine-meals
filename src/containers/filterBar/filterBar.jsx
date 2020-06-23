@@ -1,8 +1,8 @@
 import React from 'react';
-import CategoryFilter from '../../components/CategoryFilter/CategoryFilter';
-import OrderFilter from '../../components/OrderFilter/OrderFilter';
+import CategoryFilter from '../../components/categoryFilter/categoryFilter';
+import OrderFilter from '../../components/orderFilter/filter';
 
-const FilterBar {
+const FilterBar = {
   render() {
     return (
       <div className="col-lg-3">
@@ -16,7 +16,7 @@ const FilterBar {
         </div>
       </div>
     );
-  }
+  },
 };
 
 export default FilterBar;

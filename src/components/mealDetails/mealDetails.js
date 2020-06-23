@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { addMealToFavourite } from '../../actions/index';
 
@@ -63,14 +62,4 @@ MealDetails.propTypes = {
   }).isRequired,
 };
 
-const mapStateToProps = state => ({
-  meal: state.meal,
-});
-
-const mapDispatchToProps = dispatch => ({
-  addMealToFavourite: meal => {
-    dispatch(addMealToFavourite(meal));
-  },
-});
-
-export default connect(mapStateToProps)(mapDispatchToProps)(MealDetails);
+export default MealDetails;

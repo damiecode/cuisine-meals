@@ -1,7 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import './catgoryFilter.scss';
+import './categoryFilter.scss';
 import fetchCategories from '../../data/categories';
 import { addCategoryToFilter, removeCategoryFromFilter } from '../../actions/index';
 
@@ -52,25 +51,4 @@ CategoryFilter.propTypes = {
   categoryItemsCount: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => {
-  const categoryItemsCount = {};
-
-  state.categories.forEach(p => {
-    categoryItemsCount[p.category] = categoryItemsCount[p.category] + 1 || 1;
-  });
-
-  return {
-    categoryItemsCount,
-  };
-};
-
-const mapDispatchToProps = dispatch => ({
-  addCategoryToFilter: category => {
-    dispatch(addCategoryToFilter(category));
-  },
-  removeCategoryFromFilter: category => {
-    dispatch(removeCategoryFromFilter(category));
-  },
-});
-
-export default connect(mapStateToProps)(mapDispatchToProps)(CategoryFilter);
+export default CategoryFilter;
