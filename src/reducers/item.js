@@ -12,7 +12,7 @@ const initialState = {
   favourite: [],
 };
 
-const storeReducer = (state = initialState, action) => {
+const itemReducer = (state = initialState, action) => {
   let updatedFavourite;
   let updatedItemIndex;
 
@@ -79,4 +79,4 @@ const storeReducer = (state = initialState, action) => {
   }
 };
 
-export default storeReducer;
+export default itemReducer;

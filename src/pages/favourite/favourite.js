@@ -1,3 +1,5 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -24,12 +26,8 @@ const FavouriteMeals = props => (
 );
 
 FavouriteMeals.propTypes = {
+  favouriteItems: PropTypes.string.isRequired,
   favouriteItemCount: PropTypes.number.isRequired,
-}
+};
 
-const mapStateToProps = state => ({
-  favouriteItems: state.favourite,
-  favouriteItemCount: state.favourite.reduce((count, curItem) => count + curItem.quantity, 0),
-});
-
-export default connect(mapStateToProps, null)(FavouriteMeals);
+export default connect()(FavouriteMeals);

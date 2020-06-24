@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
@@ -23,7 +24,7 @@ const Header = ({ favouritesLength }) => (
 );
 
 Header.propTypes = {
-  favouritesLength: PropTypes.number.isRequired,
+  favouritesLength: PropTypes.number,
 };
 
 export default Header;

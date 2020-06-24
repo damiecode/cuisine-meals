@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Meals from '../../components/meals/meals';
 import categoryFilter from '../../pipes/categoryFilter';
 import orderByFilter from '../../pipes/orderByFilter';
@@ -65,6 +67,7 @@ class MealList extends Component {
   render() {
     const page = this.state;
     const isActive = page.colValue[page.colValue.length - 1];
+    const prop = this.props;
 
     return (
       <div className="col-lg-9">
@@ -80,10 +83,10 @@ class MealList extends Component {
           </div>
         </div>
         <div className="row">
-          {paginationPipe(this.props.meals, this.state).map(meal => {
+          {paginationPipe(prop.meals, this.state).map(meal => {
             const classes = `${page.colValue} col-md-6 mb-4`;
             return (
-              <div className={classes}>
+              <div key={meal.id} className={classes}>
                 <Meals key={meal.id} meal={meal} />
               </div>
             );
@@ -91,7 +94,7 @@ class MealList extends Component {
         </div>
         <div className="d-flex justify-content-end">
           <LetterFilter
-            totalItemsCount={this.props.meals.length}
+            totalItemsCount={prop.meals.length}
             currentPage={page.currentPage}
             perPage={page.perPage}
             pagesToShow={page.pagesToShow}

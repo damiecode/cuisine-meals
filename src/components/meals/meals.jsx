@@ -4,25 +4,24 @@ import { Link } from 'react-router-dom';
 
 const Meals = ({ meal, addMealToFavourite }) => {
   const imageRef = React.createRef();
-  const [img] = useState(meal.images[0]);
+  const [img] = useState(meal.strMealThumb[0]);
 
   return (
     <div className="card h-100 meal">
-      <Link to={`/meals/${meal.id}`} className="meal__link">
+      <Link to={`/meals/${meal.idMeal}`} className="meal__link">
         <img
           className="card-img-top product__img"
           src={img}
-          alt={meal.name}
+          alt={meal.strMeal}
           ref={imageRef}
         />
       </Link>
       <div className="card-body meal__text">
         <h4 className="card-title meal__name">
-          <Link to={`/meals/${meal.id}`}>{meal.name}</Link>
+          <Link to={`/meals/${meal.idMeal}`}>{meal.strMeal}</Link>
         </h4>
-        <h5 className="meal__category">{meal.category}</h5>
-        <h5 className="meal__area">{meal.area}</h5>
-        <p className="card-text product__instructions">{meal.instructions}</p>
+        <h5 className="meal__category">{meal.strCategory}</h5>
+        <h5 className="meal__area">{meal.strArea}</h5>
         <button
           type="button"
           onClick={() => {
@@ -39,12 +38,11 @@ const Meals = ({ meal, addMealToFavourite }) => {
 
 Meals.propTypes = {
   meal: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    category: PropTypes.string,
-    area: PropTypes.string,
-    instructions: PropTypes.string,
-    images: PropTypes.string,
+    idMeal: PropTypes.number,
+    strMeal: PropTypes.string,
+    strCategory: PropTypes.string,
+    strArea: PropTypes.string,
+    strMealThumb: PropTypes.string,
   }).isRequired,
   addMealToFavourite: PropTypes.func.isRequired,
 };

@@ -1,65 +1,81 @@
-import React from 'react';
+/* eslint-disable react/destructuring-assignment */
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import { addMealToFavourite } from '../../actions/index';
 
-const MealDetails = meal => {
-  const onFavourites = meal => {
-    addMealToFavourite(meal);
-  };
+const MealDetails = ({ meal, addMealToFavourite }) => {
+  const imageRef = React.createRef();
+  const [img] = useState(meal.strMealThumb[0]);
 
   return (
-    <aside className="col-sm-7">
-      <article className="card-body p-5">
-        <h3 className="title mb-3">{meal.name}</h3>
+    <div>
+      <div className="col-sm-5 border-right">
+        <article className="gallery-wrap">
+          <div className="img-big-wrap">
+            <div style={{ padding: '2rem' }}>
+              <a href={img}>
+                <img
+                  ref={imageRef}
+                  src={img}
+                  alt={meal.strMeal}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                  }}
+                />
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+      <aside className="col-sm-7">
+        <article className="card-body p-5">
+          <h3 className="title mb-3">{meal.strMeal}</h3>
 
-        <dl className="item-property">
-          <dt>Instructions</dt>
-          <dd><p className="text-capitalize">{meal.instructions}</p></dd>
-        </dl>
-        <dl className="param param-feature">
-          <dt>Category</dt>
-          <dd className="text-capitalize">{meal.category}</dd>
-        </dl>
-        <dl className="param param-feature">
-          <dt>Area</dt>
-          <dd>{meal.area}</dd>
-        </dl>
-        <dl className="param param-feature">
-          <dt>Tags</dt>
-          <dd>{meal.tags}</dd>
-        </dl>
-        <dl className="param param-feature">
-          <dt>Source</dt>
-          <dd>{meal.source}</dd>
-        </dl>
-        <hr />
-        <hr />
-        <button
-          type="button"
-          onClick={onFavourites}
-          className="btn btn-lg btn-outline-primary text-uppercase"
-        >
-          <FavoriteBorderIcon />
-          {' '}
-          Add to favourites
-        </button>
-      </article>
-    </aside>
+          <dl className="item-property">
+            <dt>Instructions</dt>
+            <dd><p className="text-capitalize">{meal.strInstructions}</p></dd>
+          </dl>
+          <dl className="param param-feature">
+            <dt>Category</dt>
+            <dd className="text-capitalize">{meal.strCategory}</dd>
+          </dl>
+          <dl className="param param-feature">
+            <dt>Area</dt>
+            <dd>{meal.strArea}</dd>
+          </dl>
+          <dl className="param param-feature">
+            <dt>Tags</dt>
+            <dd>{meal.strTags}</dd>
+          </dl>
+          <hr />
+          <hr />
+          <button
+            type="button"
+            onClick={() => addMealToFavourite(meal)}
+            className="btn btn-lg btn-outline-primary text-uppercase"
+          >
+            <FavoriteBorderIcon />
+            {' '}
+            Add to favourites
+          </button>
+        </article>
+      </aside>
+    </div>
   );
 };
 
 MealDetails.propTypes = {
   meal: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    category: PropTypes.string,
-    area: PropTypes.string,
-    source: PropTypes.string,
-    tags: PropTypes.string,
-    instructions: PropTypes.string,
-    images: PropTypes.string,
+    idMeal: PropTypes.number,
+    strMeal: PropTypes.string,
+    strCategory: PropTypes.string,
+    strArea: PropTypes.string,
+    strTags: PropTypes.string,
+    strInstructions: PropTypes.string,
+    strMealThumb: PropTypes.string,
   }).isRequired,
+  addMealToFavourite: PropTypes.func.isRequired,
 };
 
 export default MealDetails;

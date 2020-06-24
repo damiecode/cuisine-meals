@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import storeReducer from './store';
+import item from './item';
 import categoryFilterReducer from './categoryFilter';
 import orderByReducer from './orderByFilter';
 import filterReducer from './filter';
 // import paginationReducer from './pagination';
 
 const rootReducer = combineReducers({
-  storeReducer,
+  item,
   categoryFilter: categoryFilterReducer,
   orderBy: orderByReducer,
   filter: filterReducer,

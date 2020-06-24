@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import {
   BrowserRouter, Switch, Route, Redirect,
 } from 'react-router-dom';
-import './assets/css/App.css';
-import Home from './pages/Home/home';
-import Header from './components/header/header';
-import Footer from './components/footer/footer';
-import MealDetail from './pages/mealDetail/mealsDetail';
-import FavouriteItems from './pages/favourite/favourite';
+import '../assets/css/App.css';
+import Home from '../pages/Home/home';
+import Header from './header/header';
+import Footer from './footer/footer';
+import MealDetail from '../pages/mealDetail/mealsDetail';
+import FavouriteItems from '../pages/favourite/favourite';
 
 class App extends Component {
   constructor(props) {
@@ -26,8 +26,8 @@ class App extends Component {
               path="/"
               render={() => <Redirect to="/meals" />}
             />
-            <Route exact path="/meals" component={Home} />
-            <Route exact path="/meals/:id" component={MealDetail} />
+            {/* <Route exact path="/meals" component={Home} /> */}
+            <Route exact path="/meals:id" component={MealDetail} />
             <Route exact path="/favourites" component={FavouriteItems} />
           </Switch>
           <Footer />
