@@ -7,7 +7,6 @@ const MealDetail = meal => (
     <div className="card">
       <div className="row">
         <MealDetails meal={meal} />
-        console.log(meal)
       </div>
     </div>
   </div>

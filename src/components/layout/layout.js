@@ -31,7 +31,7 @@ const Layout = (
 Layout.propTypes = {
   len: PropTypes.number.isRequired,
   click: PropTypes.func.isRequired,
-  isActive: PropTypes.func.isRequired,
+  isActive: PropTypes.bool.isRequired,
 };
 
 export default Layout;

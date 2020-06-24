@@ -8,6 +8,8 @@ import Header from './header/header';
 import Footer from './footer/footer';
 import MealDetail from '../pages/mealDetail/mealsDetail';
 import FavouriteItems from '../pages/favourite/favourite';
+import MealList from '../containers/mealList/mealList';
+import FilterBar from '../containers/filterBar/filterBar';
 
 class App extends Component {
   constructor(props) {
@@ -20,6 +22,8 @@ class App extends Component {
       <BrowserRouter>
         <>
           <Header />
+          <MealList />
+          {/* <FilterBar /> */}
           <Switch>
             <Route
               exact

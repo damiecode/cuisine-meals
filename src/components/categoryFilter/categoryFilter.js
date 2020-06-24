@@ -8,13 +8,13 @@ import { addCategoryToFilter, removeCategoryFromFilter } from '../../actions/ind
 const CategoryFilter = props => {
   const { categoryItemsCount } = props;
   const handleSelectBox = e => {
-    const { name } = e.target;
+    const { strMeal } = e.target;
     const value = e.target.checked;
 
     if (value) {
-      addCategoryToFilter(name);
+      addCategoryToFilter(strMeal);
     } else {
-      removeCategoryFromFilter(name);
+      removeCategoryFromFilter(strMeal);
     }
   };
 

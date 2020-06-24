@@ -1,127 +1,121 @@
-import React, {Component} from 'react';
-import {connect} from "react-redux";
-import {goPage, nextPage, prevPage} from "../../actions";
+// import React, {Component} from 'react';
+// import {connect} from "react-redux";
+// import {goPage, nextPage, prevPage} from "../../actions";
 
-class Pagination extends Component {
-    onPage(n){
-        this.props.onGoPage(n);
-    }
+// class Pagination extends Component {
+//     onPage(n){
+//         this.props.onGoPage(n);
+//     }
 
-    isOnLastPage(){
-        // console.log(this.props.perPage * this.props.currentPage, this.props.totalItemsCount);
-        return this.props.perPage * this.props.currentPage >= this.props.totalItemsCount;
-    }
+//     isOnLastPage(){
+//         // console.log(this.props.perPage * this.props.currentPage, this.props.totalItemsCount);
+//         return this.props.perPage * this.props.currentPage >= this.props.totalItemsCount;
+//     }
 
-    totalPages() {
-        return Math.ceil(this.props.totalItemsCount / this.props.perPage) || 0;
-    }
+//     totalPages() {
+//         return Math.ceil(this.props.totalItemsCount / this.props.perPage) || 0;
+//     }
 
-    getMin(){
-        return ((this.props.perPage * this.props.currentPage) - this.props.perPage) + 1;
-    }
+//     getMin(){
+//         return ((this.props.perPage * this.props.currentPage) - this.props.perPage) + 1;
+//     }
 
-    getMax() {
-        let max = this.props.perPage * this.props.currentPage;
-        if (max > this.props.totalItemsCount) {
-            max = this.props.totalItemsCount;
-        }
-        return max;
-    }
-    onPrev = () => {
-        this.props.onPrevPage();
-    }
+//     getMax() {
+//         let max = this.props.perPage * this.props.currentPage;
+//         if (max > this.props.totalItemsCount) {
+//             max = this.props.totalItemsCount;
+//         }
+//         return max;
+//     }
+//     onPrev = () => {
+//         this.props.onPrevPage();
+//     }
 
-    onNext = () =>  {
-        this.props.onNextPage();
-    }
+//     onNext = () =>  {
+//         this.props.onNextPage();
+//     }
 
+//     getPages = () => {
+//         const c = Math.ceil(this.props.totalItemsCount / this.props.perPage);
+//         const p = this.props.currentPage || 1;
+//         const pagesToShow = this.props.pagesToShow || 9;
+//         const pages = [];
+//         pages.push(p);
+//         const times = pagesToShow - 1;
+//         for (let i = 0; i < times; i++) {
+//             if (pages.length < pagesToShow) {
+//                 if (Math.min.apply(null, pages) > 1) {
+//                     pages.push(Math.min.apply(null, pages) - 1);
+//                 }
+//             }
+//             if (pages.length < pagesToShow) {
+//                 if (Math.max.apply(null, pages) < c) {
+//                     pages.push(Math.max.apply(null, pages) + 1);
+//                 }
+//             }
+//         }
+//         pages.sort((a, b) => a - b);
+//         return pages;
+//     }
 
-    getPages = () => {
-        const c = Math.ceil(this.props.totalItemsCount / this.props.perPage);
-        const p = this.props.currentPage || 1;
-        const pagesToShow = this.props.pagesToShow || 9;
-        const pages = [];
-        pages.push(p);
-        const times = pagesToShow - 1;
-        for (let i = 0; i < times; i++) {
-            if (pages.length < pagesToShow) {
-                if (Math.min.apply(null, pages) > 1) {
-                    pages.push(Math.min.apply(null, pages) - 1);
-                }
-            }
-            if (pages.length < pagesToShow) {
-                if (Math.max.apply(null, pages) < c) {
-                    pages.push(Math.max.apply(null, pages) + 1);
-                }
-            }
-        }
-        pages.sort((a, b) => a - b);
-        return pages;
-    }
+//     render() {
 
+//         console.log(this.props);
 
+//         const pages =this.getPages().map(pageNum => {
 
+//             let buttonClass = 'page-item';
 
-    render() {
+//             if(pageNum === this.props.currentPage) {
+//                 buttonClass += ' active';
+//             }
 
-        console.log(this.props);
+//             return (<li className={buttonClass} onClick={() =>
+// {this.onPage(pageNum)}}><button className="page-link" >{pageNum}</button></li>);
+//         });
 
-        const pages =this.getPages().map(pageNum => {
+//         let prevButtonClass = 'page-item';
 
-            let buttonClass = 'page-item';
+//         if (this.props.currentPage === 1) {
+//             prevButtonClass += ' disabled';
+//         }
 
-            if(pageNum === this.props.currentPage) {
-                buttonClass += ' active';
-            }
+//         const prevButton = (<li className={prevButtonClass}>
+//             <button
+//                 className="page-link" onClick={this.onPrev} tabIndex="-1">Previous</button>
+//         </li>);
 
-            return (<li className={buttonClass} onClick={() => {this.onPage(pageNum)}}><button className="page-link" >{pageNum}</button></li>);
-        });
+//         let nextButtonClass = 'page-item';
 
-        let prevButtonClass = 'page-item';
+//         if(this.isOnLastPage()) {
+//             nextButtonClass += ' disabled';
+//         }
 
-        if (this.props.currentPage === 1) {
-            prevButtonClass += ' disabled';
-        }
+//         const nextButton = (
+//             <li className={nextButtonClass}>
+//                 <button
+//                     disabled={this.isOnLastPage()}
+//                     className="page-link" onClick={this.onNext}>Next</button>
+//             </li>
+//         );
 
-        const prevButton = (<li className={prevButtonClass}>
-            <button
-                className="page-link" onClick={this.onPrev} tabIndex="-1">Previous</button>
-        </li>);
+//         return (
+//             <nav aria-label="...">
+//                 <ul className="pagination">
+//                     {prevButton}
+//                     {pages}
+//                     {nextButton}
+//                 </ul>
+//             </nav>
+//         );
+//     }
+// }
 
-        let nextButtonClass = 'page-item';
+// const mapStateToProps = (state) => {
+//     return {
+//         ...state.pagination,
+//         totalItemsCount: state.meal.length,
+//     }
+// };
 
-        if(this.isOnLastPage()) {
-            nextButtonClass += ' disabled';
-        }
-
-        const nextButton = (
-            <li className={nextButtonClass}>
-                <button
-                    disabled={this.isOnLastPage()}
-                    className="page-link" onClick={this.onNext}>Next</button>
-            </li>
-        );
-
-
-
-        return (
-            <nav aria-label="...">
-                <ul className="pagination">
-                    {prevButton}
-                    {pages}
-                    {nextButton}
-                </ul>
-            </nav>
-        );
-    }
-}
-
-
-const mapStateToProps = (state) => {
-    return {
-        ...state.pagination,
-        totalItemsCount: state.shop.products.length,
-    }
-};
-
-export default Pagination;
+// export default Pagination;

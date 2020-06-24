@@ -13,14 +13,14 @@ import {
 const FavouriteItem = ({ meal }) => {
   const [itemQuantity, setItemQuantity] = useState(meal.quantity);
   const removeItem = () => {
-    removeMealFromFavourite(meal.id);
+    removeMealFromFavourite(meal.idMeal);
   };
 
   const handleQuantityChange = e => {
     const { value } = e.target;
     if (value > 0 && value <= 10) {
       setItemQuantity(value);
-      addMealToFavourite(meal.id);
+      addMealToFavourite(meal.idMeal);
     }
   };
 
@@ -29,12 +29,12 @@ const FavouriteItem = ({ meal }) => {
 
     if (type === 'inc' && value < 10) {
       setItemQuantity(itemQuantity + 1);
-      incrementFavouriteQuantity(meal.id);
+      incrementFavouriteQuantity(meal.idMeal);
     }
 
     if (type === 'desc' && value > 1) {
       setItemQuantity(itemQuantity - 1);
-      decrementFavouriteQuantity(meal.id);
+      decrementFavouriteQuantity(meal.idMeal);
     }
   };
 
@@ -43,22 +43,22 @@ const FavouriteItem = ({ meal }) => {
       <div className="col-12 col-sm-12 col-md-2 text-center">
         <img
           className="img-responsive"
-          src={meal.images}
+          src={meal.strMealThumb}
           style={{ height: '60%', width: '60%' }}
-          alt={meal.instructions}
+          alt={meal.strMeal}
         />
       </div>
       <div className="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-        <h4 className="product-name"><strong>{shortenTitle(meal.name)}</strong></h4>
+        <h4 className="product-name"><strong>{shortenTitle(meal.strMeal)}</strong></h4>
         <h4>
-          <small className="product-description">{meal.instructions}</small>
+          <small className="product-description">{meal.strInstructions}</small>
         </h4>
       </div>
       <div className="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row product-quantity-container align-items-center">
         <div className="col-6 col-sm-6 col-md-6 text-md-right" style={{ paddingTop: '5px' }}>
           <h6>
             <strong>
-              <h5 className="meal__category">{meal.category}</h5>
+              <h5 className="meal__category">{meal.strCategory}</h5>
               <span className="text-muted">x</span>
             </strong>
           </h6>
@@ -106,11 +106,13 @@ const FavouriteItem = ({ meal }) => {
 
 FavouriteItem.propTypes = {
   meal: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    category: PropTypes.string,
-    instructions: PropTypes.string,
-    images: PropTypes.string,
+    idMeal: PropTypes.number,
+    strMeal: PropTypes.string,
+    strCategory: PropTypes.string,
+    strArea: PropTypes.string,
+    strTags: PropTypes.string,
+    strInstructions: PropTypes.string,
+    strMealThumb: PropTypes.string,
     quantity: PropTypes.number,
   }).isRequired,
 };
