@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import {
   BrowserRouter, Switch, Route, Redirect,
@@ -8,8 +9,7 @@ import Header from './header/header';
 import Footer from './footer/footer';
 import MealDetail from '../pages/mealDetail/mealsDetail';
 import FavouriteItems from '../pages/favourite/favourite';
-import MealList from '../containers/mealList/mealList';
-import FilterBar from '../containers/filterBar/filterBar';
+import fetchMeals from '../data/meals';
 
 class App extends Component {
   constructor(props) {
@@ -17,21 +17,23 @@ class App extends Component {
     this.props = props;
   }
 
+  componentDidMount() {
+    fetchMeals();
+  }
+
   render() {
     return (
       <BrowserRouter>
         <>
           <Header />
-          <MealList />
-          {/* <FilterBar /> */}
           <Switch>
             <Route
               exact
               path="/"
-              render={() => <Redirect to="/meals" />}
+              render={() => <Redirect to="/favourites" />}
             />
-            {/* <Route exact path="/meals" component={Home} /> */}
-            <Route exact path="/meals:id" component={MealDetail} />
+            {/* <Route exact path="/meals" component={Home} />
+            <Route exact path="/meals:id" component={MealDetail} /> */}
             <Route exact path="/favourites" component={FavouriteItems} />
           </Switch>
           <Footer />

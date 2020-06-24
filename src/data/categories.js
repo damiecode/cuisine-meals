@@ -7,7 +7,7 @@ import {
 const URL = 'https://www.themealdb.com/api/json/v1/1/';
 const API_LIST_CATEGORIES = `${URL}list.php?c=list`;
 
-const catgories = () => dispatch => {
+const categories = () => dispatch => {
   dispatch(fetchRequest());
   useEffect(() => {
     axios.get(`${API_LIST_CATEGORIES}`)
@@ -21,4 +21,4 @@ const catgories = () => dispatch => {
   });
 };
 
-export default catgories;
+export default categories;
