@@ -7,7 +7,6 @@ import rootReducer from './reducers/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/index.css';
 import App from './components/App';
-import * as serviceWorker from './serviceWorker';
 
 const initialState = {
   meals: [
@@ -32,5 +31,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 );
-
-serviceWorker.unregister();
