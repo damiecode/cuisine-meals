@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to Catalogue for Dogs clothes 👋</h1>
+<h1 align="center">Welcome to Catalogue for Recipies 👋</h1>
 <br>
 
 <!-- <p>
