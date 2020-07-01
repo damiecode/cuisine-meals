@@ -2,11 +2,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import rootReducer from './reducers/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/index.css';
 import App from './components/App';
+import fetchMeals from './data/meals';
 
 const initialState = {
   meals: [
@@ -21,7 +23,8 @@ const initialState = {
     }],
 };
 
-const store = createStore(rootReducer, initialState);
+const store = createStore(rootReducer, initialState, applyMiddleware(thunk));
+store.dispatch(fetchMeals);
 
 ReactDOM.render(
   <React.StrictMode>

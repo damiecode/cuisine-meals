@@ -12,7 +12,7 @@ const Header = ({ favouritesLength }) => (
     <div>
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <NavLink className="nav-link" to="{/favourites}">
+          <NavLink className="nav-link" to="/favourites">
             <FavoriteBorderIcon />
             Favourites
             {favouritesLength ? `(${favouritesLength})` : '' }

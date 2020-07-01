@@ -1,15 +1,10 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Meal from '../../components/meals/meal';
 import categoryFilter from '../../pipes/categoryFilter';
 import orderByFilter from '../../pipes/orderByFilter';
-import Layout from '../../components/layout/layout';
-import paginationPipe from '../../pipes/paginationFilter';
 import LetterFilter from '../../components/orderFilter/filter';
-// import Pagination from "../../components/Pagination/Pagination";
 
 const MealList = ({ meals }) => {
   const keys = Object.keys(meals);
@@ -39,6 +34,10 @@ const MealList = ({ meals }) => {
       </div>
     </div>
   );
+};
+
+MealList.propTypes = {
+  meals: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {

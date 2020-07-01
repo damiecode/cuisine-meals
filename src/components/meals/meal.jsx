@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import fetchMeals from '../../data/meals';
 
-const Meal = ({ meal, addMealToFavourite }) => {
+const Meal = ({ meal, addMealToFavourite, fetchMeals }) => {
   const imageRef = React.createRef();
   const [img] = useState(meal.strMealThumb[0]);
+
+  const mealID = meal.idMeal;
+
+  useEffect(() => {
+    fetchMeals(mealID);
+  }, [mealID], fetchMeals);
 
   return (
     <div className="card h-100 meal">
@@ -45,6 +53,13 @@ Meal.propTypes = {
     strMealThumb: PropTypes.string,
   }).isRequired,
   addMealToFavourite: PropTypes.func.isRequired,
+  fetchMeals: PropTypes.func.isRequired,
 };
 
-export default Meal;
+const MapDispatchToProps = dispatch => ({
+  fetchMeals: mealID => {
+    dispatch(fetchMeals(mealID));
+  },
+});
+
+export default connect(null, MapDispatchToProps)(Meal);

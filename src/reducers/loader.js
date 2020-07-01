@@ -23,4 +23,8 @@ const loaderReducer = (state = { isLoading: false, form: '', errors: '' }, actio
   }
 };
 
+export const getMeals = state => state.meals;
+export const getMealsPending = state => state.pending;
+export const getMealsError = state => state.error;
+
 export default loaderReducer;
