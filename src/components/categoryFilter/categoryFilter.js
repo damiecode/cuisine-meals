@@ -18,20 +18,23 @@ const CategoryFilter = props => {
     }
   };
 
+  const keys = Object.keys(categories);
+  const filtered = keys.filter(item => categories[item]);
+
   return (
     <div className="card mb-3">
       <div className="card-header">
         <h3>Categories</h3>
       </div>
       <ul className="list-group flex-row flex-wrap">
-        {categories.map(category => (
+        {filtered.map(category => (
           <li className="list-group-item flex-50" key={category.id}>
             <label htmlFor={category} className="custom-checkbox text-capitalize">
               {' '}
               {category}
               {' '}
               (
-              {categoryItemsCount[categories]}
+              {categoryItemsCount[filtered]}
               )
               <input
                 type="checkbox"

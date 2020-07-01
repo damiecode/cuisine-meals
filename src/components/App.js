@@ -30,10 +30,10 @@ class App extends Component {
             <Route
               exact
               path="/"
-              render={() => <Redirect to="/favourites" />}
+              render={() => <Redirect to="/meal" />}
             />
-            {/* <Route exact path="/meals" component={Home} />
-            <Route exact path="/meals:id" component={MealDetail} /> */}
+            {/* <Route exact path="/meals" component={Home} /> */}
+            <Route exact path="/meals:id" component={MealDetail} />
             <Route exact path="/favourites" component={FavouriteItems} />
           </Switch>
           <Footer />

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const Meals = ({ meal, addMealToFavourite }) => {
+const Meal = ({ meal, addMealToFavourite }) => {
   const imageRef = React.createRef();
   const [img] = useState(meal.strMealThumb[0]);
 
@@ -36,7 +36,7 @@ const Meals = ({ meal, addMealToFavourite }) => {
   );
 };
 
-Meals.propTypes = {
+Meal.propTypes = {
   meal: PropTypes.shape({
     idMeal: PropTypes.number,
     strMeal: PropTypes.string,
@@ -47,4 +47,4 @@ Meals.propTypes = {
   addMealToFavourite: PropTypes.func.isRequired,
 };
 
-export default Meals;
+export default Meal;

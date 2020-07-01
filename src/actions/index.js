@@ -1,61 +1,10 @@
 // const API_GET_MEAL_LATEST = 'meal/latest';
-// const API_GET_MEAL_INGREDIENT = 'meal/ingredient';
-// const API_GET_MAIN_INGREDIENT = 'meal/main_ingredient';
-// const API_GET_MEAL_AREA = 'meal/area';
 // const API_GET_MEAL_BY = 'filter/meal';
 // const API_GET_MEAL = mealID => `meal/${mealID}`;
 
-// const FETCH_MEALS_PENDING = 'FETCH_MEAL_PENDING';
-// const FETCH_MEALS_SUCCESS = 'FETCH_MEAL_SUCCESS';
 // const FETCH_MEALS_ERROR = 'FETCH_MEAL_ERROR';
 // const FETCH_MEALLIST = 'FETCH_MEALLIST';
 // const FETCH_MEAL = 'FETCH_MEAL';
-// const CHANGE_FILTER = 'CHANGE_FILTER';
-// const TOGGLE_MODAL = 'TOGGLE_MODAL';
-// const REFRESH_MODAL = 'REFRESH_MODAL';
-
-// const fetchMealsPending = () => ({
-//   type: FETCH_MEALS_PENDING,
-// });
-
-// const fetchMealsSuccess = response => ({
-//   type: FETCH_MEALS_SUCCESS,
-//   response,
-// });
-
-// const fetchMealsError = error => ({
-//   type: FETCH_MEALS_ERROR,
-//   error,
-// });
-
-// const fetchMealListSuccess = (meals, apiURL, searchBy, mealIDS) => ({
-//   type: FETCH_MEALLIST,
-//   response: meals,
-//   apiURL,
-//   searchBy,
-//   mealIDS,
-// });
-
-// const fetchMealSuccess = meals => ({
-//   type: FETCH_MEAL,
-//   response: meals,
-// });
-
-// const changeFilter = genre => ({
-//   type: CHANGE_FILTER,
-//   genre,
-// });
-
-// const toggleModal = (modalType, selectedObject) => ({
-//   type: TOGGLE_MODAL,
-//   modalType,
-//   selectedObject,
-// });
-
-// const refreshModal = selectedObject => ({
-//   type: REFRESH_MODAL,
-//   selectedObject,
-// });
 
 export const FETCH_REQUEST = 'FETCH_REQUEST';
 export const FETCH_REQUEST_SUCCESS = 'FETCH_REQUEST_SUCCESS';
@@ -91,8 +40,8 @@ export const fetchMealsSuccess = meals => ({
 
 export const ADD_MEAL_TO_FAVOURITE = 'ADD_MEAL_TO_FAVOURITE';
 export const REMOVE_MEAL_FROM_FAVOURITE = 'REMOVE_MEAL_FROM_FAVOURITE';
-export const INCREMENT_FAVOURITE_ITEM_QUANTITY = 'INCREMENT_FAVOURITE_ITEM_QUANTITY';
-export const DECREMENT_FAVOURTIE_ITEM_QUANTITY = 'DECREMENT_FAVOURTIE_ITEM_QUANTITY';
+export const INCREMENT_FAVOURITE_MEAL_QUANTITY = 'INCREMENT_FAVOURITE_MEAL_QUANTITY';
+export const DECREMENT_FAVOURTIE_MEAL_QUANTITY = 'DECREMENT_FAVOURTIE_MEAL_QUANTITY';
 
 export const addMealToFavourite = meal => ({
   type: ADD_MEAL_TO_FAVOURITE,
@@ -105,12 +54,12 @@ export const removeMealFromFavourite = mealId => ({
 });
 
 export const incrementFavouriteQuantity = mealId => ({
-  type: INCREMENT_FAVOURITE_ITEM_QUANTITY,
+  type: INCREMENT_FAVOURITE_MEAL_QUANTITY,
   payload: mealId,
 });
 
 export const decrementFavouriteQuantity = mealId => ({
-  type: DECREMENT_FAVOURTIE_ITEM_QUANTITY,
+  type: DECREMENT_FAVOURTIE_MEAL_QUANTITY,
   payload: mealId,
 });
 

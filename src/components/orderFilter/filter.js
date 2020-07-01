@@ -13,6 +13,8 @@ const letters = [
 
 const LetterFilter = ({ changeFilter }) => {
   const select = React.useRef(null);
+  const keys = Object.keys(letters);
+  const filtered = keys.filter(item => letters[item]);
   return (
     <div className="filter">
       <select
@@ -22,7 +24,7 @@ const LetterFilter = ({ changeFilter }) => {
         ref={select}
         onChange={() => changeFilter(select.current.value)}
       >
-        {letters.map(letter => (
+        {filtered.map(letter => (
           <option key={letter}>{letter}</option>
         ))}
       </select>

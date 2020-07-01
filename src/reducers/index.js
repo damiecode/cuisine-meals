@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import item from './item';
+import mealReducer from './meals';
 import categoryFilterReducer from './categoryFilter';
 import orderByReducer from './orderByFilter';
 import filterReducer from './filter';
 // import paginationReducer from './pagination';
 
 const rootReducer = combineReducers({
-  item,
+  meals: mealReducer,
   categoryFilter: categoryFilterReducer,
   orderBy: orderByReducer,
   filter: filterReducer,

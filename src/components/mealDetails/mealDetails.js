@@ -1,5 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
@@ -78,4 +79,4 @@ MealDetails.propTypes = {
   addMealToFavourite: PropTypes.func.isRequired,
 };
 
-export default MealDetails;
+export default connect()(MealDetails);

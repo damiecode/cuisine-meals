@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Meals from '../../components/meals/meals';
+import Meal from '../../components/meals/meal';
 import categoryFilter from '../../pipes/categoryFilter';
 import orderByFilter from '../../pipes/orderByFilter';
 import Layout from '../../components/layout/layout';
@@ -12,6 +12,9 @@ import LetterFilter from '../../components/orderFilter/filter';
 // import Pagination from "../../components/Pagination/Pagination";
 
 const MealList = ({ meals }) => {
+  const keys = Object.keys(meals);
+  const filteredMeals = keys.filter(item => meals[item]);
+
   const page = {
     colValue: 'col-lg-4',
     gridValue: 3,
@@ -20,18 +23,18 @@ const MealList = ({ meals }) => {
   return (
     <div className="col-lg-9">
       <div className="row">
-        {(meals).map(meal => {
+        {(filteredMeals).map(meal => {
           const classes = `${page.colValue} col-md-6 mb-4`;
           return (
             <div key={meal.id} className={classes}>
-              <Meals key={meal.id} meal={meal} />
+              <Meal key={meal.id} meal={meal} />
             </div>
           );
         })}
       </div>
       <div className="d-flex justify-content-end">
         <LetterFilter
-          totalItemsCount={meals.length}
+          totalItemsCount={filteredMeals.length}
         />
       </div>
     </div>

@@ -64,12 +64,12 @@ $ git clone https://github.com/damiecode/cuisine-meals.git
 
 ```sh
 $ cd cuisine-meals
-$ npm install
+$ yarn install
 $ yarn build
 $ yarn start
 ```
 
-> Open `http://127.0.0.1:8080` using your favourite broswer, if it doesn't open automatically.
+> Open `http://127.0.0.1:3000` using your favourite broswer, if it doesn't open automatically.
 
 ## Authors
 
