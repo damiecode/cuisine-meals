@@ -30,7 +30,7 @@ class App extends Component {
             <Route
               exact
               path="/"
-              render={() => <Redirect to="/meal" />}
+              render={() => <Redirect to="/meals" />}
             />
             {/* <Route exact path="/meals" component={Home} /> */}
             <Route exact path="/meals:id" component={MealDetail} />
