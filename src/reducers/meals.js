@@ -17,6 +17,33 @@ const mealReducer = (state = initialState, action) => {
   let updatedMealIndex;
 
   switch (action.type) {
+    case ADD_MEAL_TO_FAVOURITE:
+      updatedFavourite = [...state.favourite];
+      updatedMealIndex = updatedFavourite.findIndex(meal => meal.id === action.meal.id);
+
+      if (updatedMealIndex < 0) {
+        updatedFavourite.push({ ...action.meal, quantity: 1 });
+      } else {
+        const updatedMeal = {
+          ...updatedFavourite[updatedMealIndex],
+        };
+
+        updatedMeal.quantity += 1;
+        updatedFavourite[updatedMealIndex] = updatedMeal;
+      }
+
+      return { ...state, favourite: updatedFavourite };
+    case REMOVE_MEAL_FROM_FAVOURITE:
+      updatedFavourite = [...state.favourite];
+      updatedMealIndex = updatedFavourite.findIndex(
+        meal => meal.id === action.meal,
+      );
+
+      updatedFavourite.splice(updatedMealIndex, 1);
+
+      return { ...state, favourite: updatedFavourite };
+    default:
+      return state;
     case INCREMENT_FAVOURITE_MEAL_QUANTITY:
       updatedFavourite = [...state.favourite];
       updatedMealIndex = updatedFavourite.findIndex(
@@ -48,34 +75,6 @@ const mealReducer = (state = initialState, action) => {
       updatedFavourite[updatedMealIndex] = decrementedMeal;
 
       return { ...state, favourite: updatedFavourite };
-
-    case ADD_MEAL_TO_FAVOURITE:
-      updatedFavourite = [...state.favourite];
-      updatedMealIndex = updatedFavourite.findIndex(meal => meal.id === action.meal.id);
-
-      if (updatedMealIndex < 0) {
-        updatedFavourite.push({ ...action.meal, quantity: 1 });
-      } else {
-        const updatedMeal = {
-          ...updatedFavourite[updatedMealIndex],
-        };
-
-        updatedMeal.quantity += 1;
-        updatedFavourite[updatedMealIndex] = updatedMeal;
-      }
-
-      return { ...state, favourite: updatedFavourite };
-    case REMOVE_MEAL_FROM_FAVOURITE:
-      updatedFavourite = [...state.favourite];
-      updatedMealIndex = updatedFavourite.findIndex(
-        meal => meal.id === action.meal,
-      );
-
-      updatedFavourite.splice(updatedMealIndex, 1);
-
-      return { ...state, favourite: updatedFavourite };
-    default:
-      return state;
   }
 };
 

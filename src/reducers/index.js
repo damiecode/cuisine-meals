@@ -3,6 +3,7 @@ import mealReducer from './meals';
 import categoryFilterReducer from './categoryFilter';
 import orderByReducer from './orderByFilter';
 import filterReducer from './filter';
+import loaderReducer from './loader';
 // import paginationReducer from './pagination';
 
 const rootReducer = combineReducers({
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   categoryFilter: categoryFilterReducer,
   orderBy: orderByReducer,
   filter: filterReducer,
+  status: loaderReducer,
   // pagination: paginationReducer,
 });
 
