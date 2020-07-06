@@ -24,7 +24,7 @@ const initialState = {
 };
 
 const store = createStore(rootReducer, initialState, applyMiddleware(thunk));
-store.dispatch(fetchMeals);
+store.dispatch(fetchMeals());
 
 ReactDOM.render(
   <React.StrictMode>

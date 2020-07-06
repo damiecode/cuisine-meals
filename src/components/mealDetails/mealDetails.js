@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import { addMealToFavourite } from '../../actions';
 
 const MealDetails = ({ meal, addMealToFavourite }) => {
   const imageRef = React.createRef();
-  const [img] = useState(meal.strMealThumb[0]);
+  const [img] = useState(meal[0].strMealThumb);
 
   return (
     <div>
@@ -17,8 +18,8 @@ const MealDetails = ({ meal, addMealToFavourite }) => {
               <a href={img}>
                 <img
                   ref={imageRef}
-                  src={img}
-                  alt={meal.strMeal}
+                  src={meal[0].strMealThumb}
+                  alt={meal[0].strMeal}
                   style={{
                     width: '100%',
                     height: '100%',
@@ -31,23 +32,23 @@ const MealDetails = ({ meal, addMealToFavourite }) => {
       </div>
       <aside className="col-sm-7">
         <article className="card-body p-5">
-          <h3 className="title mb-3">{meal.strMeal}</h3>
+          <h3 className="title mb-3">{meal[0].strMeal}</h3>
 
           <dl className="item-property">
             <dt>Instructions</dt>
-            <dd><p className="text-capitalize">{meal.strInstructions}</p></dd>
+            <dd><p className="text-capitalize">{meal[0].strInstructions}</p></dd>
           </dl>
           <dl className="param param-feature">
             <dt>Category</dt>
-            <dd className="text-capitalize">{meal.strCategory}</dd>
+            <dd className="text-capitalize">{meal[0].strCategory}</dd>
           </dl>
           <dl className="param param-feature">
             <dt>Area</dt>
-            <dd>{meal.strArea}</dd>
+            <dd>{meal[0].strArea}</dd>
           </dl>
           <dl className="param param-feature">
             <dt>Tags</dt>
-            <dd>{meal.strTags}</dd>
+            <dd>{meal[0].strTags}</dd>
           </dl>
           <hr />
           <hr />
@@ -79,4 +80,14 @@ MealDetails.propTypes = {
   addMealToFavourite: PropTypes.func.isRequired,
 };
 
-export default connect()(MealDetails);
+const mapStateToProps = state => ({
+  meal: state.meals,
+});
+
+const mapDispatchToProps = dispatch => ({
+  addMealToFavourite: meal => {
+    dispatch(addMealToFavourite(meal));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MealDetails);

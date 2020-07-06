@@ -4,11 +4,10 @@ import {
 } from '../actions/index';
 
 const URL = 'https://www.themealdb.com/api/json/v1/1/';
-const API_GET_NAME = letter => `${URL}/search.php?f=${letter}`;
 
-const fetchMeals = () => dispatch => {
+const fetchMeals = (letter = 'a') => dispatch => {
   dispatch(fetchRequest());
-  axios.get(`${API_GET_NAME}`)
+  axios.get(`${URL}/search.php?f=${letter}`)
     .then(response => {
       dispatch(fetchRequestSuccess(response.statusText));
       dispatch(fetchMealsSuccess(response.data.meals));

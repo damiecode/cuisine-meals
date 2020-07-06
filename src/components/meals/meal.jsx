@@ -56,10 +56,14 @@ Meal.propTypes = {
   fetchMeals: PropTypes.func.isRequired,
 };
 
+const mapStateToProps = state => ({
+  meal: state.meals,
+});
+
 const MapDispatchToProps = dispatch => ({
   fetchMeals: mealID => {
     dispatch(fetchMeals(mealID));
   },
 });
 
-export default connect(null, MapDispatchToProps)(Meal);
+export default connect(mapStateToProps, MapDispatchToProps)(Meal);

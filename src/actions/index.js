@@ -10,7 +10,7 @@ export const FETCH_REQUEST = 'FETCH_REQUEST';
 export const FETCH_REQUEST_SUCCESS = 'FETCH_REQUEST_SUCCESS';
 export const FETCH_REQUEST_FAILURE = 'FETCH_REQUEST_FAILURE';
 
-export const FETCH_MEALS = 'FTECH_MEALS';
+export const FETCH_MEALS = 'FETCH_MEALS';
 export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
 
 export const fetchRequest = () => ({

@@ -18,9 +18,9 @@ const LetterFilter = ({ changeFilter }) => {
   return (
     <div className="filter">
       <select
-        id="filter-category"
+        id="filter-letter"
         className="form-input"
-        name="category"
+        name="letter"
         ref={select}
         onChange={() => changeFilter(select.current.value)}
       >

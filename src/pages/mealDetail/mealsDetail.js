@@ -12,12 +12,12 @@ const MealDetail = meal => (
   </div>
 );
 
-// const mapStateToProps = (state, props) => {
-//   const meal = state.meals.find(meal => meal.id === +props.match.params.id);
+const mapStateToProps = (state, props) => {
+  const meal = state.meals.find(meal => meal.id === +props.match.params.id);
 
-//   return {
-//     meal,
-//   };
-// };
+  return {
+    meal,
+  };
+};
 
-export default connect()(MealDetail);
+export default connect(mapStateToProps, null)(MealDetail);

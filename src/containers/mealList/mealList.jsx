@@ -46,7 +46,6 @@ const mapStateToProps = state => {
 
   const filterByCategoryArr = categoryFilter(state.meals, categories);
   const filterByOrderArr = orderByFilter(filterByCategoryArr, orderBy);
-
   return { meals: filterByOrderArr };
 };
 
