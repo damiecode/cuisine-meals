@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MealDetails from '../../components/mealDetails/mealDetails';
 
-const MealDetail = meal => (
+const MealsDetail = meal => (
   <div className="container" style={{ padding: '6rem 0' }}>
     <div className="card">
       <div className="row">
@@ -20,4 +20,4 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps, null)(MealDetail);
+export default connect(mapStateToProps, null)(MealsDetail);

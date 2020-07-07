@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import MealList from '../../containers/mealList/mealList';
 import FilterBar from '../../containers/filterBar/filterBar';
 
@@ -13,4 +14,8 @@ const Home = () => (
   </>
 );
 
-export default Home;
+const mapStateToProps = state => ({
+  meal: state.meals,
+});
+
+export default connect(mapStateToProps, null)(Home);

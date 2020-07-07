@@ -21,8 +21,8 @@ const MealList = ({ meals }) => {
         {(filteredMeals).map(meal => {
           const classes = `${page.colValue} col-md-6 mb-4`;
           return (
-            <div key={meal.id} className={classes}>
-              <Meal key={meal.id} meal={meal} />
+            <div key={meal.idMeal} className={classes}>
+              <Meal key={meal.idMeal} meal={meal} />
             </div>
           );
         })}

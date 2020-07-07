@@ -54,7 +54,7 @@ const MealDetails = ({ meal, addMealToFavourite }) => {
             <hr />
             <button
               type="button"
-              onClick={() => console.log(addMealToFavourite(meal[i].idMeal))}
+              onClick={() => addMealToFavourite(meal[i].idMeal)}
               className="btn btn-lg btn-outline-primary text-uppercase"
             >
               <FavoriteBorderIcon />
@@ -66,6 +66,7 @@ const MealDetails = ({ meal, addMealToFavourite }) => {
       </div>
     );
   }
+  return meal;
 };
 
 MealDetails.propTypes = {
