@@ -93,7 +93,7 @@ export const clearOrderBy = () => ({
   type: CLEAR_ORDER_BY_LETTER,
 });
 
-export const change = letter => ({
+export const changeFilter = letter => ({
   type: CHANGE_FILTER,
   letter,
 });

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../../assets/css/filter.scss';
 
 const letters = [
   'a', 'b', 'c', 'd',
@@ -13,8 +14,6 @@ const letters = [
 
 const LetterFilter = ({ changeFilter }) => {
   const select = React.useRef(null);
-  const keys = Object.keys(letters);
-  const filtered = keys.filter(item => letters[item]);
   return (
     <div className="filter">
       <select
@@ -24,7 +23,7 @@ const LetterFilter = ({ changeFilter }) => {
         ref={select}
         onChange={() => changeFilter(select.current.value)}
       >
-        {filtered.map(letter => (
+        {letters.map(letter => (
           <option key={letter}>{letter}</option>
         ))}
       </select>

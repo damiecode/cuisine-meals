@@ -13,7 +13,9 @@ const fetchMeals = (letter = 'a') => dispatch => {
       dispatch(fetchMealsSuccess(response.data.meals));
     })
     .catch(error => {
-      dispatch(fetchRequestFailure(error.response.data.status_message));
+      if (error.response && error.response.data) {
+        dispatch(fetchRequestFailure(error.response.data.errors));
+      }
     });
 };
 

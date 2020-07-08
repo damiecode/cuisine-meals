@@ -1,20 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import fetchMeals from '../../data/meals';
 
-const Meal = ({ meal, addMealToFavourite, fetchMeals }) => {
-  for (let i = 0; i < meal.length; i += 1) {
+const Meal = ({ meal, addMealToFavourite }) => {
+  for (let i = 0; i <= meal.length; i += 1) {
     const imageRef = React.createRef();
     const [img] = useState(meal[i].strMealThumb[0]);
-
+    console.log(i)
+    console.log(meal[1])
     const mealID = meal[i].idMeal;
-
-    useEffect(() => {
-      fetchMeals(mealID);
-    }, [mealID], fetchMeals);
-
     return (
       <div className="card h-100 meal">
         <Link to={`/meals/${meal[i].idMeal}`} className="meal__link">

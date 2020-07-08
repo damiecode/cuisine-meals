@@ -7,7 +7,7 @@ const Home = () => (
   <>
     <div className="container" style={{ paddingTop: '6rem' }}>
       <div className="row">
-        <FilterBar />
+        {/* <FilterBar /> */}
         <MealList />
       </div>
     </div>
