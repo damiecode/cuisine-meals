@@ -1,11 +1,3 @@
-// const API_GET_MEAL_LATEST = 'meal/latest';
-// const API_GET_MEAL_BY = 'filter/meal';
-// const API_GET_MEAL = mealID => `meal/${mealID}`;
-
-// const FETCH_MEALS_ERROR = 'FETCH_MEAL_ERROR';
-// const FETCH_MEALLIST = 'FETCH_MEALLIST';
-// const FETCH_MEAL = 'FETCH_MEAL';
-
 export const FETCH_REQUEST = 'FETCH_REQUEST';
 export const FETCH_REQUEST_SUCCESS = 'FETCH_REQUEST_SUCCESS';
 export const FETCH_REQUEST_FAILURE = 'FETCH_REQUEST_FAILURE';

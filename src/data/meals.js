@@ -11,6 +11,7 @@ const fetchMeals = (letter = 'a') => dispatch => {
     .then(response => {
       dispatch(fetchRequestSuccess(response.statusText));
       dispatch(fetchMealsSuccess(response.data.meals));
+      return response.data.meals;
     })
     .catch(error => {
       if (error.response && error.response.data) {

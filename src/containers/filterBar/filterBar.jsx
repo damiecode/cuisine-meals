@@ -1,6 +1,6 @@
 import React from 'react';
 import CategoryFilter from '../../components/categoryFilter/categoryFilter';
-import OrderFilter from '../../components/orderFilter/letterFilter';
+import OrderFilter from '../../components/letterFilter/letterFilter';
 
 const FilterBar = {
   render() {

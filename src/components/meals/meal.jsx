@@ -4,26 +4,24 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import fetchMeals from '../../data/meals';
 
-const Meal = ({ meal, addMealToFavourite }) => {
-  for (let i = 0; i <= meal.length; i += 1) {
+const Meal = ({ meals, addMealToFavourite }) => {
+  const meal = Object.values(meals);
+  for (let i = 0; i <= meal.length - 1; i += 1) {
     const imageRef = React.createRef();
     const [img] = useState(meal[i].strMealThumb[0]);
-    console.log(i)
-    console.log(meal[1])
     const mealID = meal[i].idMeal;
     return (
       <div className="card h-100 meal">
-        <Link to={`/meals/${meal[i].idMeal}`} className="meal__link">
+        <Link to={`/meals:${meal[i].idMeal}`} className="meal__link">
           <img
             className="card-img-top product__img"
             src={meal[i].strMealThumb}
             alt={meal[i].strMeal}
-            ref={imageRef}
           />
         </Link>
         <div className="card-body meal__text">
           <h4 className="card-title meal__name">
-            <Link to={`/meals/${meal[i].idMeal}`}>{meal[i].strMeal}</Link>
+            <Link to={`/meals:${meal[i].idMeal}`}>{meal[i].strMeal}</Link>
           </h4>
           <h5 className="meal__category">{meal[i].strCategory}</h5>
           <h5 className="meal__area">{meal[i].strArea}</h5>
@@ -40,11 +38,10 @@ const Meal = ({ meal, addMealToFavourite }) => {
       </div>
     );
   }
-  return meal;
 };
 
 Meal.propTypes = {
-  meal: PropTypes.shape({
+  meals: PropTypes.shape({
     idMeal: PropTypes.number,
     strMeal: PropTypes.string,
     strCategory: PropTypes.string,
@@ -56,7 +53,7 @@ Meal.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  meal: state.meals,
+  meals: state.meals,
 });
 
 const MapDispatchToProps = dispatch => ({

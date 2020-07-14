@@ -1,15 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { changeFilter } from '../../actions/index';
 import Meal from '../../components/meals/meal';
 import categoryFilter from '../../pipes/categoryFilter';
 import orderByFilter from '../../pipes/orderByFilter';
-import LetterFilter from '../../components/orderFilter/letterFilter';
+import LetterFilter from '../../components/letterFilter/letterFilter';
 
-const MealList = ({ meals }) => {
-  const keys = Object.keys(meals);
-  const filteredMeals = keys.filter(item => meals[item]);
-
+const MealList = ({ meals, filter, changeFilter }) => {
+  const filterMeals = (filter !== 'a') ? meals.filter(meal => meal.letter === filter) : meals;
   const page = {
     colValue: 'col-lg-4',
     gridValue: 3,
@@ -19,11 +18,12 @@ const MealList = ({ meals }) => {
     <div className="col-lg-9">
       <div className="d-flex justify-content-end">
         <LetterFilter
-          totalItemsCount={filteredMeals.length}
+          totalItemsCount={meals.length}
+          changeFilter={changeFilter}
         />
       </div>
       <div className="row">
-        {meals.map(meal => {
+        {filterMeals.map(meal => {
           const classes = `${page.colValue} col-md-6 mb-4`;
           return (
             <div key={meal} className={classes}>
@@ -37,16 +37,20 @@ const MealList = ({ meals }) => {
 };
 
 MealList.propTypes = {
-  meals: PropTypes.func.isRequired,
+  meals: PropTypes.array.isRequired,
+  changeFilter: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = state => {
-  const categories = state.categoryFilter;
-  const { orderBy } = state;
+const mapStateToProps = state => ({
+  meals: state.meals,
+  filter: state.filter,
+});
 
-  const filterByCategoryArr = categoryFilter(state.meals, categories);
-  const filterByOrderArr = orderByFilter(filterByCategoryArr, orderBy);
-  return { meals: filterByOrderArr };
-};
+const mapDispatchToProps = dispatch => ({
+  changeFilter: letter => {
+    dispatch(changeFilter(letter));
+  },
+});
 
-export default connect(mapStateToProps, null)(MealList);
+export default connect(mapStateToProps, mapDispatchToProps)(MealList);
