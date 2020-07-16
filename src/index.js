@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,9 +12,31 @@ import fetchMeals from './data/meals';
 
 const initialState = {
   meals: [],
+  filter: 'a',
 };
 
-const store = createStore(rootReducer, initialState, applyMiddleware(thunk));
+const enhancers = [];
+const middleware = thunk;
+
+if (process.env.NODE_ENV === 'development') {
+  const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;
+
+  if (typeof devToolsExtension === 'function') {
+    enhancers.push(devToolsExtension());
+  }
+}
+
+const composedEnhancers = compose(
+  applyMiddleware(middleware),
+  ...enhancers,
+);
+
+const store = createStore(
+  rootReducer,
+  initialState,
+  composedEnhancers,
+);
+
 store.dispatch(fetchMeals());
 
 ReactDOM.render(

@@ -11,7 +11,7 @@ const FilterBar = {
             <CategoryFilter />
           </div>
           <div className="col-12">
-            <OrderFilter />
+            {/* <OrderFilter /> */}
           </div>
         </div>
       </div>

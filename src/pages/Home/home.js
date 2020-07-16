@@ -7,15 +7,11 @@ const Home = () => (
   <>
     <div className="container" style={{ paddingTop: '6rem' }}>
       <div className="row">
-        {/* <FilterBar /> */}
-        <MealList />
+        <FilterBar />
+        {/* <MealList /> */}
       </div>
     </div>
   </>
 );
 
-const mapStateToProps = state => ({
-  meal: state.meals,
-});
-
-export default connect(mapStateToProps, null)(Home);
+export default Home;
