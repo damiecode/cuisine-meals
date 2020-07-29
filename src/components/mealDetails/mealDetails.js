@@ -24,7 +24,7 @@ const MealDetails = ({
       </span>
     </p>
     <hr />
-    <div className="d-flex flex-w">
+    <div className="d-flex flex-w w-70">
       <p className="text-b text-capitalize">
         Ingredients:
       </p>
