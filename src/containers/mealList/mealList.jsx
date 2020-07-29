@@ -1,56 +1,76 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { changeFilter } from '../../actions/index';
-import Meal from '../../components/meals/meal';
-// import categoryFilter from '../../pipes/categoryFilter';
-// import orderByFilter from '../../pipes/orderByFilter';
-import LetterFilter from '../../components/letterFilter/letterFilter';
+import { Link } from 'react-router-dom';
+import MealPreview from '../../components/meals/meal';
+import fetchMeals from '../../data/meals';
+import fetchMeal from '../../data/singleMeal';
+import { getMealsError, getMeals, getMealsPending } from '../../actions/meal';
+import { CHANGE_CATEGORY } from '../../actions/index';
+import PageLoader from '../../components/loader/loader';
 
-const MealList = ({ meals, filter, changeFilter }) => {
-  const filterMeals = (filter !== 'a') ? meals.filter(meal => meal.letter === filter) : meals;
-  const page = {
-    colValue: 'col-lg-4',
-    gridValue: 3,
+const MealsList = props => {
+  const {
+    meals, pending, fetchMeals, category,
+  } = props;
+
+  useEffect(() => {
+    fetchMeals(category);
+  }, [category, fetchMeals]);
+
+  const shouldComponentRender = () => {
+    if (category === undefined || pending === true) return false;
+    return true;
   };
-  console.log(meals);
+
+  if (!shouldComponentRender()) { return <PageLoader />; }
   return (
-    <div className="col-lg-9">
-      <div className="d-flex justify-content-end">
-        <LetterFilter
-          totalItemsCount={meals.length}
-          changeFilter={changeFilter}
-        />
-      </div>
-      <div className="row">
-        {filterMeals.map(meal => {
-          const classes = `${page.colValue} col-md-6 mb-4`;
-          return (
-            <div key={meal.idMeal} className={classes}>
-              <Meal key={meal.idMeal} meal={meal} />
-            </div>
-          );
-        })}
+    <div>
+      <div className="container">
+        {meals.map(el => (
+          <Link to={`/meal/${el.idMeal}`} key={Math.random() * 1000}>
+            <MealPreview
+              src={el.strMealThumb}
+              name={el.strMeal}
+              id={el.idMeal}
+            />
+          </Link>
+        ))}
       </div>
     </div>
   );
 };
 
-MealList.propTypes = {
-  meals: PropTypes.instanceOf(Object).isRequired,
-  changeFilter: PropTypes.func.isRequired,
-  filter: PropTypes.string.isRequired,
+MealsList.defaultProps = {
+  meals: [''],
 };
 
-const mapStateToProps = state => ({
-  meals: state.meals,
-  filter: state.filter,
-});
+MealsList.propTypes = {
+  pending: PropTypes.bool.isRequired,
+  category: PropTypes.string.isRequired,
+  fetchMeals: PropTypes.func.isRequired,
+  meals: PropTypes.arrayOf(String),
+};
 
-const mapDispatchToProps = dispatch => ({
-  changeFilter: letter => {
-    dispatch(changeFilter(letter));
-  },
-});
+const mapStateToProps = state => {
+  const { meals } = state;
+  return (
+    {
+      error: getMealsError(meals),
+      meals: getMeals(meals),
+      pending: getMealsPending(meals),
+      current: meals.category,
+    }
+  );
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(MealList);
+const mapDispatchToProps = {
+  fetchMeals,
+  addFilter: CHANGE_CATEGORY,
+  fetchMeal,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(MealsList);

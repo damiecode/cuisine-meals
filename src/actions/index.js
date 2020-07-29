@@ -1,34 +1,38 @@
-export const FETCH_REQUEST = 'FETCH_REQUEST';
-export const FETCH_REQUEST_SUCCESS = 'FETCH_REQUEST_SUCCESS';
-export const FETCH_REQUEST_FAILURE = 'FETCH_REQUEST_FAILURE';
-
-export const FETCH_MEALS = 'FETCH_MEALS';
-export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
-
-export const fetchRequest = () => ({
-  type: FETCH_REQUEST,
+const fetchRequestPending = () => ({
+  type: 'FETCH_REQUEST_PENDING',
 });
 
-export const fetchRequestSuccess = response => ({
-  type: FETCH_REQUEST_SUCCESS,
+const fetchRequestSuccess = response => ({
+  type: 'FETCH_REQUEST_SUCCESS',
   response,
 });
 
-export const fetchRequestFailure = (response, form = '') => ({
-  type: FETCH_REQUEST_FAILURE,
-  response,
-  form,
+const fetchMealsSuccess = meals => ({
+  type: 'FETCH_MEALS_SUCCESS',
+  meals,
 });
 
-export const fetchCategoriesSuccess = categories => ({
-  type: FETCH_CATEGORIES,
-  response: categories,
+const fetchRequestFailure = error => ({
+  type: 'FETCH_REQUEST_FAILURE',
+  error,
 });
 
-export const fetchMealsSuccess = meals => ({
-  type: FETCH_MEALS,
-  response: meals,
+const fetchCategoriesSuccess = categories => ({
+  type: 'FETCH_CATEGORIES_SUCCESS',
+  categories,
 });
+
+const fetchSingleMeal = details => ({
+  type: 'FETCH_MEAL_SUCCESS',
+  details,
+});
+
+const CHANGE_CATEGORY = category => ({
+  type: 'CHANGE_CATEGORY',
+  category,
+});
+
+export const resetSelected = () => ({ type: 'RESET' });
 
 export const ADD_MEAL_TO_FAVOURITE = 'ADD_MEAL_TO_FAVOURITE';
 export const REMOVE_MEAL_FROM_FAVOURITE = 'REMOVE_MEAL_FROM_FAVOURITE';
@@ -55,60 +59,12 @@ export const decrementFavouriteQuantity = mealId => ({
   payload: mealId,
 });
 
-export const ADD_CATEGORY_TO_FILTER = 'ADD_CATEGORY_TO_FILTER';
-export const REMOVE_CATEGORY_FROM_FILTER = 'REMOVE_CATEGORY_FROM_FILTER';
-
-export const addCategoryToFilter = category => ({
-  type: ADD_CATEGORY_TO_FILTER,
-  category,
-});
-
-export const removeCategoryFromFilter = category => ({
-  type: REMOVE_CATEGORY_FROM_FILTER,
-  category,
-});
-
-export const ORDER_BY_ASC = 'ORDER_BY_ASC';
-export const ORDER_BY_DESC = 'ORDER_BY_DESC';
-export const CLEAR_ORDER_BY_LETTER = 'CLEAR_ORDER_BY_LETTER';
-export const CHANGE_FILTER = 'CHANGE_FILTER';
-
-export const orderByAsc = () => ({
-  type: ORDER_BY_ASC,
-});
-
-export const orderByDesc = () => ({
-  type: ORDER_BY_DESC,
-});
-
-export const clearOrderBy = () => ({
-  type: CLEAR_ORDER_BY_LETTER,
-});
-
-export const changeFilter = letter => ({
-  type: CHANGE_FILTER,
-  letter,
-});
-
-export const PREV_PAGE = 'PREV_PAGE';
-export const NEXT_PAGE = 'NEXT_PAGE';
-export const GO_PAGE = 'GO_PAGE';
-export const COUNT_ITEM = 'COUNT_ITEM';
-
-export const prevPage = () => ({
-  type: PREV_PAGE,
-});
-
-export const nextPage = () => ({
-  type: NEXT_PAGE,
-});
-
-export const goPage = n => ({
-  type: GO_PAGE,
-  currentPage: n,
-});
-
-export const countItems = n => ({
-  type: COUNT_ITEM,
-  totalItemsCount: n,
-});
+export {
+  fetchRequestPending,
+  fetchRequestSuccess,
+  fetchRequestFailure,
+  fetchMealsSuccess,
+  fetchCategoriesSuccess,
+  fetchSingleMeal,
+  CHANGE_CATEGORY,
+};

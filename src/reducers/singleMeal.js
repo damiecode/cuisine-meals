@@ -1,22 +1,21 @@
 const initialState = {
   pending: false,
-  meals: [],
+  details: {},
   error: '',
-  category: '',
 };
 
-const mealsReducer = (state = initialState, action) => {
+const singleMealReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'FETCH_REQUEST_PENDING':
+    case 'FFETCH_REQUEST_PENDING':
       return {
         ...state,
         pending: true,
       };
-    case 'FETCH_MEALS_SUCCESS':
+    case 'FETCH_MEAL_SUCCESS':
       return {
         ...state,
         pending: false,
-        meals: action.meals,
+        details: action.details,
       };
     case 'FETCH_REQUEST_FAILURE':
       return {
@@ -24,14 +23,11 @@ const mealsReducer = (state = initialState, action) => {
         pending: false,
         error: action.error,
       };
-    case 'CHANGE_CATEGORY':
-      return {
-        ...state,
-        category: action.category,
-      };
+    case 'RESET':
+      return initialState;
     default:
       return state;
   }
 };
 
-export default mealsReducer;
+export default singleMealReducer;

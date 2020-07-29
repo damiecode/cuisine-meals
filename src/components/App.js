@@ -1,47 +1,26 @@
 import React from 'react';
 import {
-  BrowserRouter, Switch, Route, Redirect,
+  Switch, Route,
 } from 'react-router-dom';
 import '../assets/css/App.css';
-import Home from '../pages/Home/home';
+import AllCategories from '../containers/home/home';
 import Header from './header/header';
 import Footer from './footer/footer';
-import MealsDetail from '../pages/mealDetail/mealsDetail';
-import FavouriteItems from '../pages/favourite/favourite';
-import fetchMeals from '../data/meals';
+import AllMeals from '../containers/meals/allMeals';
+import MealsDetail from '../containers/mealsDetails/mealsDetails';
+// import FavouriteItems from '../pages/favourite/favourite';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.props = props;
-  }
-
-  componentDidMount() {
-    fetchMeals();
-  }
-
-  render() {
-    return (
-      <BrowserRouter>
-        <>
-          <div className="App">
-            <Header />
-            <Switch>
-              <Route
-                exact
-                path="/"
-                render={() => <Redirect to="/meals" />}
-              />
-              <Route exact path="/meals" component={Home} />
-              <Route exact path="/meals:id" component={MealsDetail} />
-              <Route exact path="/favourites" component={FavouriteItems} />
-            </Switch>
-            <Footer />
-          </div>
-        </>
-      </BrowserRouter>
-    );
-  }
-}
+const App = () => (
+  <div className="App">
+    <Header />
+    <Switch>
+      <Route exact path="/" component={AllCategories} />
+      <Route path="/category/:category" component={AllMeals} />
+      <Route exact path="/meal/:id" component={MealsDetail} />
+      {/* <Route exact path="/favourites" component={FavouriteItems} /> */}
+    </Switch>
+    <Footer />
+  </div>
+);
 
 export default App;
