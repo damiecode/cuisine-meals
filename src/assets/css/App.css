@@ -214,6 +214,10 @@ button:focus {
   height: 80%;
 }
 
+.item-m {
+  margin-left: 40%;
+}
+
 .item-c {
   display: flex;
   flex-direction: column;

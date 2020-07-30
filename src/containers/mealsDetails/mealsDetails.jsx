@@ -30,10 +30,10 @@ const MealsDetails = props => {
   }
 
   return (
-    <div className="item-d card text-center">
+    <div className="item-d card text-center d-flex">
       <div className="item-c card-img-top">
         <Image className="item-i shadow" src={img} name={name} />
-        <div className="ml-4 card-body">
+        <div className="item-m card-body">
           <MealDetails category={category} className="ingredients" area={area} ingredients={ingredients} instructions={instructions} />
           <div className="ingd-btns">
             <Link to="/">

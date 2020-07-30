@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 const MealDetails = ({
   category, area, ingredients, instructions,
 }) => (
-  <div className="w-50 card-text">
+  <div className="w-50">
     <p className="text-b p-10">
-      <span className="m-10 text-capitalize">
+      <span className="m-10 text-capitalize font-weight-bolder">
         Category:
       </span>
       <span className="m-10 ingredient">
@@ -16,7 +16,7 @@ const MealDetails = ({
     </p>
     <hr />
     <p className="text-b p-10">
-      <span className="m-10 text-capitalize card-text">
+      <span className="m-10 text-capitalize font-weight-bolder">
         Area:
       </span>
       <span className="m-10 ingredient">
@@ -25,7 +25,7 @@ const MealDetails = ({
     </p>
     <hr />
     <div className="d-flex flex-w w-70">
-      <p className="text-b text-capitalize">
+      <p className="text-b text-capitalize font-weight-bolder">
         Ingredients:
       </p>
       {ingredients.map(el => (
@@ -37,7 +37,7 @@ const MealDetails = ({
     </div>
     <hr />
     <p className="text-b p-10">
-      <span className="m-10 text-capitalize">
+      <span className="m-10 text-capitalize font-weight-bolder">
         Instructions:
       </span>
       <span className="m-10 ingredient">
