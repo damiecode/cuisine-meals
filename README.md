@@ -1,4 +1,5 @@
-<h1 align="center">Welcome to Catalogue for Recipies 👋</h1>
+
+<h1 align="center">Welcome to Cuisine Meals 👋</h1>
 <br>
 
 <!-- <p>
@@ -50,26 +51,26 @@ The webapp should have at least 2 types of pages:
 * prop-types
 * React Testing Library
 
-### ✨ [Live Demo](https://rawcdn.githack.com/damiecode/Weather-App/feature/weatherApp/dist/index.html)
+### ✨ [Live Demo](https://cuisine-meals.netlify.app)
 
 ## Usage
 
 > Clone the repository to your local machine
 
 ```sh
-$ git clone https://github.com/damiecode/catalogue-for-dogs-clothes.git
+$ git clone https://github.com/damiecode/cuisine-meals.git
 ```
 
 > cd into the directory, install dependencies, build and start
 
 ```sh
-$ cd catalogue-for-dogs-clothes
-$ npm install
-$ npm run build
-$ npm run start
+$ cd cuisine-meals
+$ yarn install
+$ yarn build
+$ yarn start
 ```
 
-> Open `http://127.0.0.1:8080` using your favourite broswer, if it doesn't open automatically.
+> Open `http://127.0.0.1:3000` using your favourite broswer, if it doesn't open automatically.
 
 ## Authors
 
@@ -80,9 +81,9 @@ $ npm run start
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/damiecode/catalogue-for-dogs-clothes.git/issues).
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/damiecode/cuisine-meals.git/issues).
 
-1. Fork it (https://github.com/damiecode/catalogue-for-dogs-clothes.git/fork)
+1. Fork it (https://github.com/damiecode/cuisine-meals.git/fork)
 2. Create your working branch (git checkout -b [choose-a-name])
 3. Commit your changes (git commit -am 'what this commit will fix/add/improve')
 4. Push to the branch (git push origin [chosen-name])

@@ -1,0 +1,59 @@
+.meal {
+  padding-bottom: 2rem;
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__text {
+    flex: 0 0 40%;
+  }
+
+  &__link {
+    flex: 0 0 60%;
+    height: 60%;
+    padding: 1rem;
+    position: relative;
+  }
+
+  &__name {
+    font-size: 0.8rem;
+  }
+
+  &__instructions {
+    font-size: 0.7rem;
+  }
+
+  &:hover {
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  }
+
+  &__add-to-favourites {
+    position: absolute;
+    bottom: 0.8rem;
+    width: 60%;
+    left: 50%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%);
+    transition: all 0.2s;
+    padding: 3px 12px;
+  }
+
+  &:hover &__add-to-favourites {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .meal {
+    height: auto !important;
+
+    &__add-to-cart {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
